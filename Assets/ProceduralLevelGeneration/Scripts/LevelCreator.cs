@@ -417,7 +417,11 @@ public class LevelCreator : MonoBehaviour
         rooms[0] = new Room();
         corridors[0] = new Corridor();
 
-        rooms[0].SetupRoom(roomWidth, roomHeight, columns, rows);
+        //rooms[0].SetupRoom(roomWidth, roomHeight, columns, rows);
+        rooms[0].xPos = 45;
+        rooms[0].yPos = 45;
+        rooms[0].roomWidth = 10;
+        rooms[0].roomHeight = 10;
 
         corridors[0].SetupCorridor(rooms[0], corridorLength, roomWidth, roomHeight, columns, rows, true);
 
