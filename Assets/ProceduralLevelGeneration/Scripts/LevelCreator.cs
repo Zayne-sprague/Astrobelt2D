@@ -404,6 +404,8 @@ public class LevelCreator : MonoBehaviour
     void CreateRoomsAndCorridors()
     {
 
+        creatingRoom = true;
+
         numRooms = new IntRange(minRooms, maxRooms);
         roomWidth = new IntRange(minRoomWidth, maxRoomWidth);
         roomHeight = new IntRange(minRoomHeight, maxRoomHeight);
@@ -452,6 +454,9 @@ public class LevelCreator : MonoBehaviour
 
         headRoomIndex = rooms.Length - 1;
         headCorridorIndex = corridors.Length - 1;
+
+        creatingRoom = false;
+
     }
 
     void SetTileValuesForRooms() 
