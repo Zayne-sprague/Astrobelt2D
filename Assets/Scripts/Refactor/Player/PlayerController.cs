@@ -110,7 +110,7 @@ public class PlayerController : MonoBehaviour
             yield return 0;
         }
 
-        //FindObjectOfType<GameSession>().ProcessPlayerDeath();
+        FindObjectOfType<ProceduralGameManager>().ProcessPlayerDeath();
 
     }
 
@@ -285,6 +285,15 @@ public class PlayerController : MonoBehaviour
         }
 
         m_Lens.OrthographicSize = startingZoom;
+
+    }
+
+    public void increaseShipSpeed()
+    {
+        if(ShipSpeed >= EndingShipSpeed) { return; }
+
+        ShipSpeed += ShipSpeedIncrementer;
+        myRigidBody.velocity = getMovement();
 
     }
 

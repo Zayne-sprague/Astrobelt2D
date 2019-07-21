@@ -5,6 +5,7 @@ using UnityEngine;
 public class CorridorGoal : MonoBehaviour
 {
     [SerializeField] public float total_time_to_create_room = 5;
+    [SerializeField] public int pointsToRecieve = 1;
 
     SpriteRenderer mySpriteRenderer;
     ProceduralGameManager game_manager;
@@ -48,6 +49,7 @@ public class CorridorGoal : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         print("Collision Hit");
+        game_manager.scored(pointsToRecieve);
         mySpriteRenderer.enabled = false;
     }
 }
