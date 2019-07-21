@@ -43,6 +43,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c365739a0ba1e4283bcde3eadbb65c64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  corridor_goal: {fileID: -2562083094168572546, guid: 089a3abc1bbf44e6ea6efa603c4e8ba6,
+    type: 3}
   columns: 2
   rows: 2
   minRooms: 3
@@ -56,4 +58,5 @@ MonoBehaviour:
   asset: {fileID: -6030350212046109436, guid: 76b669ffeab074bd896679e30a1b0314, type: 3}
   debug: 0
   debug_room_generation: 0
+  show_debug_icons: 0
   debug_Timer: 10

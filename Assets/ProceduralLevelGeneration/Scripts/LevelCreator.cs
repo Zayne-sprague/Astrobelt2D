@@ -12,6 +12,8 @@ public class LevelCreator : MonoBehaviour
         AsteroidGenerator, CorridorTile, Room
     }
 
+    [SerializeField] public CorridorGoal corridor_goal;
+
     [SerializeField] public int columns = 100;
     [SerializeField] public int rows = 100;
 
@@ -93,7 +95,7 @@ public class LevelCreator : MonoBehaviour
 
     /* v ROOM GENERATION v */
 
-    void createNewRoom()
+    public void createNewRoom()
     {
         if (creatingRoom) { return; }
         creatingRoom = true;
@@ -136,6 +138,7 @@ public class LevelCreator : MonoBehaviour
             }
 
             tmp_corridor = new Corridor();
+            tmp_corridor.goal_gameobject = corridor_goal;
             tmp_corridor.SetupCorridor(prevRoom, corridorLength, roomWidth, roomHeight, columns, rows, false);
 
 
@@ -416,6 +419,7 @@ public class LevelCreator : MonoBehaviour
 
         rooms[0] = new Room();
         corridors[0] = new Corridor();
+        corridors[0].goal_gameobject = corridor_goal;
 
         //rooms[0].SetupRoom(roomWidth, roomHeight, columns, rows);
         rooms[0].xPos = 45;
@@ -433,6 +437,7 @@ public class LevelCreator : MonoBehaviour
             if (i < corridors.Length)
             {
                 corridors[i] = new Corridor();
+                corridors[i].goal_gameobject = corridor_goal;
                 corridors[i].SetupCorridor(rooms[i], corridorLength, roomWidth, roomHeight, columns, rows, false);
             }
         }
