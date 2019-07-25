@@ -48,7 +48,7 @@ public class ProceduralGameManager : MonoBehaviour
 
     public void level_complete()
     {
-        lvlCreator.createNewRoom();
+        lvlCreator.AddARoom();
         return;
     }
 }

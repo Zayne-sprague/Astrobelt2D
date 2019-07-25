@@ -30,7 +30,7 @@ public class AsteroidGenerator : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //SetUpTile();
+        SetUpTile();
     }
 
     public void SetUpTile()

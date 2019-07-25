@@ -132,31 +132,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cameras
       objectReference: {fileID: 0}
-    - target: {fileID: 5074610790169844239, guid: b406c3d873f074f28a5bee33a051020e,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 53
-      objectReference: {fileID: 0}
-    - target: {fileID: 5074610790169844239, guid: b406c3d873f074f28a5bee33a051020e,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 50
-      objectReference: {fileID: 0}
-    - target: {fileID: 5074610790169844239, guid: b406c3d873f074f28a5bee33a051020e,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 5074610790169844239, guid: b406c3d873f074f28a5bee33a051020e,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 5074610790169844239, guid: b406c3d873f074f28a5bee33a051020e,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -10
-      objectReference: {fileID: 0}
     - target: {fileID: 5074610791633203975, guid: b406c3d873f074f28a5bee33a051020e,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -212,11 +187,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5074610790169844242, guid: b406c3d873f074f28a5bee33a051020e,
-        type: 3}
-      propertyPath: orthographic size
-      value: 2.9610727
-      objectReference: {fileID: 0}
     - target: {fileID: 5074610790048969721, guid: b406c3d873f074f28a5bee33a051020e,
         type: 3}
       propertyPath: m_LocalPosition.y
@@ -226,6 +196,31 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalPosition.x
       value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 5074610790169844239, guid: b406c3d873f074f28a5bee33a051020e,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 53
+      objectReference: {fileID: 0}
+    - target: {fileID: 5074610790169844239, guid: b406c3d873f074f28a5bee33a051020e,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 5074610790169844239, guid: b406c3d873f074f28a5bee33a051020e,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 5074610790169844239, guid: b406c3d873f074f28a5bee33a051020e,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 5074610790169844239, guid: b406c3d873f074f28a5bee33a051020e,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -10
       objectReference: {fileID: 0}
     - target: {fileID: 5074610790587165903, guid: b406c3d873f074f28a5bee33a051020e,
         type: 3}
@@ -237,6 +232,11 @@ PrefabInstance:
       propertyPath: m_LookAt
       value: 
       objectReference: {fileID: 1543798939}
+    - target: {fileID: 5074610790169844242, guid: b406c3d873f074f28a5bee33a051020e,
+        type: 3}
+      propertyPath: orthographic size
+      value: 2.9610727
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b406c3d873f074f28a5bee33a051020e, type: 3}
 --- !u!1 &769036925
@@ -337,7 +337,7 @@ PrefabInstance:
     - target: {fileID: 4777306056155281661, guid: 1f8984d17ca6b4f6ead9bc4b510f9c5b,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4777306056155281656, guid: 1f8984d17ca6b4f6ead9bc4b510f9c5b,
         type: 3}
@@ -1989,12 +1989,12 @@ PrefabInstance:
     - target: {fileID: 7519059538998322425, guid: 7c401e6df68b244d49ae1db5d07bf17a,
         type: 3}
       propertyPath: debug
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7519059538998322425, guid: 7c401e6df68b244d49ae1db5d07bf17a,
         type: 3}
       propertyPath: debug_Timer
-      value: 0.003
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7519059538998322425, guid: 7c401e6df68b244d49ae1db5d07bf17a,
         type: 3}

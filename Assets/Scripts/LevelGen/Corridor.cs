@@ -4,17 +4,30 @@ using UnityEngine;
 
 public class Corridor : MonoBehaviour
 {
+
     public int startXPos;
     public int startYPos;
     public int corridorLength;
     public Direction direction;
-    public CorridorGoal goal_gameobject; 
+
+    // Might have to rethink how to pluck values out of an array
+    public static void RemoveAt<T>(ref T[] arr, int index)
+    {
+        for (int a = index; a < arr.Length - 1; a++)
+        {
+            // moving elements downwards, to fill the gap at [index]
+            arr[a] = arr[a + 1];
+        }
+        // finally, let's decrement Array's size by one
+        System.Array.Resize(ref arr, arr.Length - 1);
+    }
+
 
     public int EndPositionX
     {
         get
         {
-            if(direction == Direction.North || direction == Direction.South)
+            if (direction == Direction.North || direction == Direction.South)
             {
                 return startXPos;
             }
@@ -42,83 +55,191 @@ public class Corridor : MonoBehaviour
         }
     }
 
-    public void SetupCorridor(Room room, IntRange length, IntRange roomWidth, IntRange roomHeight, int columns, int rows, bool firstCorridor)
+    public int x
     {
-        direction = (Direction)Random.Range(0, 4);
-        Direction oppositeDirection = (Direction)(((int)room.enteringCorridor + 2) % 4);
-
-        if(!firstCorridor && direction == oppositeDirection)
+        get
         {
-            int directionInt = (int)direction;
-            directionInt = directionInt + Random.Range(1,4);
-            directionInt = directionInt % 4;
-            direction = (Direction)directionInt;
+            if (direction == Direction.North || direction == Direction.South)
+            {
+                return startXPos;
+            }
+            if (direction == Direction.West)
+            {
+                return EndPositionX;
+            }
+            return startXPos;
+        }
+    }
+
+    public int y
+    {
+        get
+        {
+            if (direction == Direction.East || direction == Direction.West)
+            {
+                return startYPos;
+            }
+            if (direction == Direction.South)
+            {
+                return EndPositionY;
+            }
+            return startYPos;
+        }
+    }
+
+    public int width
+    {
+        get
+        {
+            if (direction == Direction.North || direction == Direction.South)
+            {
+                return 1;
+            }
+     
+            return corridorLength;
+        }
+    }
+
+    public int height
+    {
+        get
+        {
+            if (direction == Direction.East || direction == Direction.West)
+            {
+                return 1;
+            }
+
+            return corridorLength;
+        }
+    }
+
+    public void SetupCorridor(Room room, Room[] rooms, IntRange length, IntRange roomWidth, IntRange roomHeight, int columns, int rows, int edge_padding = 1, bool firstCorridor = false)
+    {
+        // Find the opposite direction
+        int oppositeDirection = (((int)room.enteringCorridor + 2) % 4);
+
+        // Add all directions that aren't in the opposite direction to an array of possible directions
+        Direction[] dirs = new Direction[] { (Direction)((oppositeDirection + 1) % 4), (Direction)((oppositeDirection + 2) % 4), (Direction)((oppositeDirection + 3) % 4) };
+
+        // Iterate through our rooms and directions to see if we can place a room, if not increment the size of the corridor by 2 and repeat
+        loopPossibleGenerations(room, rooms, dirs, length.Random, roomWidth, roomHeight, columns, rows, edge_padding, 2);
+
+
+    }
+
+    private void loopPossibleGenerations(Room room, Room[] rooms, Direction[] possible_directions, int length, IntRange roomWidth, IntRange roomHeight, int columns, int rows, int edge_padding = 1, int len_incrementer = 2)
+    {
+        int xPos, yPos, max_length;
+        bool found = false;
+        Direction[] original_dirs = possible_directions;
+
+        if (length > columns || length > rows)
+        {
+            throw (new System.Exception("Failed to find a reasonably lengthed corridor"));
         }
 
-        corridorLength = length.Random;
+        print("attempt to find a direction with length: " + length);
 
-        int maxLength = length.m_Max;
-
-        int offset = 2;
-        float grid_offset_for_goal = 0.5f;
-
-        CorridorGoal goal;
-
-        switch (direction)
+        do
         {
-            case Direction.North:
-                startXPos = Random.Range(room.xPos + offset, room.xPos + room.roomWidth - 1 - offset);
-                startYPos = room.yPos + room.roomHeight;
-                maxLength = rows - startYPos - roomHeight.m_Min;
-                corridorLength = Mathf.Clamp(corridorLength, 1, maxLength);
 
-                //Spawn Goal//
-                goal = Instantiate(goal_gameobject, new Vector3(startXPos + grid_offset_for_goal, startYPos + corridorLength / 2, 0), Quaternion.identity);
-                goal.BuildCollisionBox(3, corridorLength);
+            print("IN LOOP");
 
-                break;
-            case Direction.East:
-                startXPos = room.xPos + room.roomWidth;
-                startYPos = Random.Range(room.yPos + offset, room.yPos + room.roomHeight - 1 - offset);
-                maxLength = columns - startXPos - roomWidth.m_Min;
-                corridorLength = Mathf.Clamp(corridorLength, 1, maxLength);
+            // Pick a direction and remove it from the array so you don't re-pick it.
+            int index = Random.Range(0, possible_directions.Length);
+            Direction dir = possible_directions[index];
+            RemoveAt(ref possible_directions, index);
 
-                //Spawn Goal//
-                goal = Instantiate(goal_gameobject, new Vector3(startXPos + corridorLength / 2, startYPos + grid_offset_for_goal, 0), Quaternion.identity);
-                goal.BuildCollisionBox(corridorLength, 3);
 
-                break;
-            case Direction.South:
-                startXPos = Random.Range(room.xPos + offset, room.xPos + room.roomWidth - offset);
-                startYPos = room.yPos;
-                maxLength = startYPos - roomHeight.m_Min;
-                corridorLength = Mathf.Clamp(corridorLength, 1, maxLength);
+            switch (dir)
+            {
 
-                //Spawn Goal//
-                goal = Instantiate(goal_gameobject, new Vector3(startXPos + grid_offset_for_goal, startYPos - corridorLength / 2, 0), Quaternion.identity);
-                goal.BuildCollisionBox(3, corridorLength);
+                case Direction.North:
 
-                break;
-            case Direction.West:
-                startXPos = room.xPos;
-                startYPos = Random.Range(room.yPos + offset, room.yPos + room.roomHeight - offset);
-                maxLength = startXPos - roomWidth.m_Min;
-                corridorLength = Mathf.Clamp(corridorLength, 1, maxLength);
+                    xPos = Random.Range(room.xPos + edge_padding, room.xPos + room.width - 1 - edge_padding);
+                    yPos = room.yPos + room.height;
+                    max_length = rows - yPos - roomHeight.m_Min;
 
-                //Spawn Goal//
-                goal = Instantiate(goal_gameobject, new Vector3(startXPos - corridorLength / 2, startYPos + grid_offset_for_goal, 0), Quaternion.identity);
-                goal.BuildCollisionBox(corridorLength, 3);
+                    if (length <= max_length && !check_for_collisions(rooms, xPos - roomWidth.m_Max, yPos, roomWidth.m_Max * 2, roomHeight.m_Max))
+                    {
+                        direction = dir;
+                        corridorLength = length;
+                        startXPos = xPos;
+                        startYPos = yPos;
+                        found = true;
+                    }
 
-                break;
+                    break;
+                case Direction.East:
+                    xPos = room.xPos + room.width;
+                    yPos = Random.Range(room.yPos + edge_padding, room.yPos + room.height - 1 - edge_padding);
+                    max_length = columns - xPos - roomWidth.m_Min;
+
+                    if (length <= max_length && !check_for_collisions(rooms, xPos, yPos - roomHeight.m_Max, roomWidth.m_Max, roomHeight.m_Max * 2))
+                    {
+                        direction = dir;
+                        corridorLength = length;
+                        startXPos = xPos;
+                        startYPos = yPos;
+                        found = true;
+
+                    }
+
+
+                    break;
+                case Direction.South:
+                    xPos = Random.Range(room.xPos + edge_padding, room.xPos + room.width - edge_padding);
+                    yPos = room.yPos;
+                    max_length = yPos - roomHeight.m_Min;
+
+                    if (length <= max_length && !check_for_collisions(rooms, xPos - roomWidth.m_Max, yPos, roomWidth.m_Max * 2, -roomHeight.m_Max))
+                    {
+                        direction = dir;
+                        corridorLength = length;
+                        startXPos = xPos;
+                        startYPos = yPos;
+                        found = true;
+
+                    }
+
+                    break;
+                case Direction.West:
+                    xPos = room.xPos;
+                    yPos = Random.Range(room.yPos + edge_padding, room.yPos + room.height - edge_padding);
+                    max_length = xPos - roomWidth.m_Min;
+
+                    if (length <= max_length && !check_for_collisions(rooms, xPos, yPos - roomHeight.m_Max, -roomWidth.m_Max, roomHeight.m_Max * 2))
+                    {
+                        direction = dir;
+                        corridorLength = length;
+                        startXPos = xPos;
+                        startYPos = yPos;
+                        found = true;
+
+                    }
+
+                    break;
+
+            }
+
         }
+        while (possible_directions.Length != 0);
 
+        if (!found)
+            loopPossibleGenerations(room, rooms, original_dirs, length + len_incrementer, roomWidth, roomHeight, columns, rows, edge_padding, len_incrementer);
 
+    }
 
-
-
-
-
-
+    private bool check_for_collisions (Room[] rooms, int xPos, int yPos, int width, int height)
+    {
+        for (int i = 0; i < rooms.Length; i++)
+        {
+            if (rooms[i] != null && rooms[i].collision(xPos, yPos, width, height))
+            {
+                return true;
+            }
+        }
+        return false;
 
     }
 }
