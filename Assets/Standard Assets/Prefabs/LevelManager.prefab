@@ -60,5 +60,9 @@ MonoBehaviour:
     type: 3}
   corridor_tile: {fileID: 8298940338877254665, guid: 2d5c22f3ae2234bf995728faf0ad95b4,
     type: 3}
+  corridor_goal: {fileID: -2562083094168572546, guid: 089a3abc1bbf44e6ea6efa603c4e8ba6,
+    type: 3}
+  flying_roids: {fileID: 2029634084205546417, guid: e89a4c91ea2a34df089a417c2eb53ae4,
+    type: 3}
   debug: 1
   debug_Timer: 0.5

@@ -33,7 +33,7 @@ public class Corridor : MonoBehaviour
             }
             if (direction == Direction.East)
             {
-                return startXPos + corridorLength - 1;
+                return startXPos + corridorLength;
             }
             return startXPos - corridorLength + 1;
         }
@@ -49,7 +49,7 @@ public class Corridor : MonoBehaviour
             }
             if (direction == Direction.North)
             {
-                return startYPos + corridorLength - 1;
+                return startYPos + corridorLength;
             }
             return startYPos - corridorLength + 1;
         }
@@ -132,6 +132,7 @@ public class Corridor : MonoBehaviour
         int xPos, yPos, max_length;
         bool found = false;
         Direction[] original_dirs = possible_directions;
+        int distance_from_edge = 10;
 
         if (length > columns || length > rows)
         {
@@ -158,7 +159,7 @@ public class Corridor : MonoBehaviour
 
                     xPos = Random.Range(room.xPos + edge_padding, room.xPos + room.width - 1 - edge_padding);
                     yPos = room.yPos + room.height;
-                    max_length = rows - yPos - roomHeight.m_Min;
+                    max_length = rows - yPos - roomHeight.m_Min - distance_from_edge;
 
                     if (length <= max_length && !check_for_collisions(rooms, xPos - roomWidth.m_Max, yPos, roomWidth.m_Max * 2, roomHeight.m_Max))
                     {
@@ -173,7 +174,7 @@ public class Corridor : MonoBehaviour
                 case Direction.East:
                     xPos = room.xPos + room.width;
                     yPos = Random.Range(room.yPos + edge_padding, room.yPos + room.height - 1 - edge_padding);
-                    max_length = columns - xPos - roomWidth.m_Min;
+                    max_length = columns - xPos - roomWidth.m_Min - distance_from_edge;
 
                     if (length <= max_length && !check_for_collisions(rooms, xPos, yPos - roomHeight.m_Max, roomWidth.m_Max, roomHeight.m_Max * 2))
                     {
@@ -189,8 +190,8 @@ public class Corridor : MonoBehaviour
                     break;
                 case Direction.South:
                     xPos = Random.Range(room.xPos + edge_padding, room.xPos + room.width - edge_padding);
-                    yPos = room.yPos;
-                    max_length = yPos - roomHeight.m_Min;
+                    yPos = room.yPos - 1;
+                    max_length = yPos - roomHeight.m_Min - distance_from_edge;
 
                     if (length <= max_length && !check_for_collisions(rooms, xPos - roomWidth.m_Max, yPos, roomWidth.m_Max * 2, -roomHeight.m_Max))
                     {
@@ -204,9 +205,9 @@ public class Corridor : MonoBehaviour
 
                     break;
                 case Direction.West:
-                    xPos = room.xPos;
+                    xPos = room.xPos - 1;
                     yPos = Random.Range(room.yPos + edge_padding, room.yPos + room.height - edge_padding);
-                    max_length = xPos - roomWidth.m_Min;
+                    max_length = xPos - roomWidth.m_Min - distance_from_edge;
 
                     if (length <= max_length && !check_for_collisions(rooms, xPos, yPos - roomHeight.m_Max, -roomWidth.m_Max, roomHeight.m_Max * 2))
                     {

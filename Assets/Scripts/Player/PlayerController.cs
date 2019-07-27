@@ -9,8 +9,10 @@ public class PlayerController : MonoBehaviour
 
     //Speed Fields
     [SerializeField] float InitialShipSpeed = 1f;
+    [SerializeField] float MinimumSpeed = .75f;
     [SerializeField] float ShipSpeedIncrementer = 0.25f;
-    [SerializeField] float EndingShipSpeed = 7f;
+    [SerializeField] float EndingShipSpeed = 3.5f;
+    [SerializeField] float DecreasePerTurn = 0.3f;
     [SerializeField] float ShipSpeed = 1f;
 
     [SerializeField] float seconds_to_die = 3f;
@@ -145,7 +147,7 @@ public class PlayerController : MonoBehaviour
     // MAIN FUNCTION USED TO CONTROL ROTATION  - the camera is the last to finish rotating, wait on it.
     private void rotateMain()
     {   
-        if (cameraRotating) { return; }
+        if (cameraRotating || !(ShipSpeed - DecreasePerTurn > MinimumSpeed)) { return; }
 
         bool mouseClick = CrossPlatformInputManager.GetButtonDown("Fire1");
         bool touchEvent = Input.touchCount == 1 && Input.GetTouch(0).phase == TouchPhase.Began;
@@ -153,7 +155,13 @@ public class PlayerController : MonoBehaviour
         if ( (mouseClick || touchEvent) && !rotating)
         {
             times_rotated = (times_rotated + 1) % 4;
+
+
+            ShipSpeed = ShipSpeed - DecreasePerTurn;
             myRigidBody.velocity = getMovement();
+
+           
+
 
            
             // zoom out
@@ -208,19 +216,22 @@ public class PlayerController : MonoBehaviour
         Vector3 new_position = set_up_camera();
 
         float turn = 90f; //times_rotated % 2 == 0 ? 90f - m_Lens.Dutch : m_Lens.Dutch;
-
-        while (seconds <= time_rotating_camera)
+        float previous_dutch = m_Lens.Dutch;
+        do
         {
             float dutch_changing = (Time.deltaTime / time_rotating_camera) * turn;
             m_Lens.Dutch = m_Lens.Dutch + dutch_changing; //times_rotated % 2 == 0 ? (m_Lens.Dutch + dutch_changing) : (m_Lens.Dutch - dutch_changing);
-
+            vcam.m_Lens = m_Lens;
+            
             seconds += Time.deltaTime;
 
             yield return 0;
 
-        }
+        } while (seconds <= time_rotating_camera);
 
+    
         m_Lens.Dutch = 90 + (times_rotated * 90); //times_rotated % 2 == 0 ? 90f : 0f;
+        vcam.m_Lens = m_Lens;
 
         if (percentSpentRotatingShip <= percentSpentZoomOut)
         {

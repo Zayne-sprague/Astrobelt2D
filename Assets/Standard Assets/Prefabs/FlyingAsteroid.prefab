@@ -1,0 +1,58 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &3053364977072194531
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 478219590380214015}
+  - component: {fileID: 2029634084205546417}
+  m_Layer: 11
+  m_Name: FlyingAsteroid
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &478219590380214015
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3053364977072194531}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2029634084205546417
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3053364977072194531}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f68ded43b9ccf499bb1754490acc91b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  assets:
+  - {fileID: 3258789205366599348, guid: 10731a21a14df41fb81a2c8b9b9272a8, type: 3}
+  - {fileID: 1673959307810418543, guid: b148cb55900e74be09b12093e5dddbf1, type: 3}
+  - {fileID: 4703606499337457799, guid: e3446d1d42abd42d9a22d9829d568650, type: 3}
+  - {fileID: 4618466379061854355, guid: 1ca0d137577fb40a0ab7ee1546dcd2fe, type: 3}
+  - {fileID: 4075763528345003549, guid: 75290cd2be8594d508c0150db09208c4, type: 3}
+  - {fileID: 4031878047479047824, guid: 010cde5a71d7444e89881f009b608fa5, type: 3}
+  - {fileID: 6613885474997642577, guid: d694c2a4bd1164d61a8bc6672dea7fa3, type: 3}
+  - {fileID: 6608875640306387408, guid: 6aa41edebba6744a8af58b1306a6e291, type: 3}
+  - {fileID: 7752732170753297442, guid: 293adb1ecbb1a45bf9bfb7357c645651, type: 3}
+  - {fileID: 4299854761957565857, guid: 47ac69fee77aa4e12ac71be397d1f41e, type: 3}
+  Max_Speed: 5
+  Min_Speed: 2

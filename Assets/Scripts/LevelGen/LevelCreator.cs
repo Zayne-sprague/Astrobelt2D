@@ -34,6 +34,11 @@ public class LevelCreator : MonoBehaviour
     [SerializeField] GameObject room_tile;
     [SerializeField] GameObject corridor_tile;
 
+    [SerializeField] CorridorGoal corridor_goal;
+
+    [SerializeField] FlyingAsteroid flying_roids;
+
+
     // Debug
     [SerializeField] public bool debug = false;
     [SerializeField] public float debug_Timer = 0.5f;
@@ -44,6 +49,7 @@ public class LevelCreator : MonoBehaviour
     private GameObject[][] tiles;
     private Room[] rooms;
     private Corridor[] corridors;
+    private ItemGenerator item_generator;
 
     private int last_created_room = 0;
     private int last_created_corridor = 0;
@@ -82,6 +88,11 @@ public class LevelCreator : MonoBehaviour
         roomHeight = new IntRange(minRoomHeight, maxRoomHeight);
         corridorLength = new IntRange(minCorridorLength, maxCorridorLength);
 
+        // Makes all the items yo
+        item_generator = new ItemGenerator();
+        item_generator.number_of_goals = total_rooms - 1;
+        item_generator.buildOut();
+
         //Holds all tiles
         board_holder = new GameObject("Board Holder");
 
@@ -119,6 +130,7 @@ public class LevelCreator : MonoBehaviour
         last_created_room = next_room_index;
         last_created_corridor = next_corridor_index;
 
+       
         creatingRoom = false;
 
     }
@@ -146,6 +158,8 @@ public class LevelCreator : MonoBehaviour
 
         corridors[corridorIndex] = new Corridor();
         corridors[corridorIndex].SetupCorridor(rooms[roomIndex], rooms, corridorLength, roomWidth, roomHeight, cols, rows, edge_padding);
+
+        item_generator.SpawnGoal(corridors[corridorIndex], corridor_goal, edge_padding);
 
         fillInRect(corridors[corridorIndex], corridor_tile);
 
@@ -219,6 +233,29 @@ public class LevelCreator : MonoBehaviour
         if (tiles[xPos][yPos] != null)
             Destroy(tiles[xPos][yPos]);
     }
+
+
+    /* v ROIDS! v */
+
+    public void spawn_roids(IntRange number_of_roids_per_room)
+    {
+
+        // For each room 
+        for (int i = 0; i < rooms.Length; i++)
+        {
+            // spawn a random amount of asteroids
+            for (int x = 0; x < number_of_roids_per_room.Random; x++)
+            {
+                FlyingAsteroid roid = Instantiate(flying_roids);
+                roid.BuildOut(rooms[i]);
+
+            }
+        }
+
+    }
+
+    /* ^ ROIDS! ^ */
+
 
     // Update is called once per frame
     void Update()

@@ -53,14 +53,14 @@ public class Room : MonoBehaviour
                 break;
             case Direction.South:
                 height = Mathf.Clamp(height, 1, corridor.EndPositionY);
-                yPos = corridor.EndPositionY - height + 1;
+                yPos = corridor.EndPositionY - height;
 
                 xPos = Random.Range(corridor.EndPositionX - width + 1 + corridor_padding, corridor.EndPositionX - corridor_padding);
                 xPos = Mathf.Clamp(xPos, 0, columns - width);
                 break;
             case Direction.West:
                 width = Mathf.Clamp(width, 1, corridor.EndPositionX);
-                xPos = corridor.EndPositionX - width + 1;
+                xPos = corridor.EndPositionX - width;
 
                 yPos = Random.Range(corridor.EndPositionY - height + 1 + corridor_padding, corridor.EndPositionY - corridor_padding);
                 yPos = Mathf.Clamp(yPos, 0, rows - height);
