@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 public class ProceduralGameManager : MonoBehaviour
 {
     [SerializeField] Text scoreText;
+    [SerializeField] Text coinScore;
     [SerializeField] public int score = 0;
     [SerializeField] LevelCreator lvlCreator;
     [SerializeField] PlayerController player;
@@ -16,6 +17,9 @@ public class ProceduralGameManager : MonoBehaviour
     [SerializeField] public int min_number_of_roids = 0;
     [SerializeField] public int max_number_of_roids = 10;
     [SerializeField] public int starting_level_for_roids = 10;
+
+    [SerializeField] public int starting_level_for_coins = 0;
+
 
     private IntRange spawnTimeForRoids;
     private IntRange numberOfRoadsToSpawn;
@@ -45,7 +49,7 @@ public class ProceduralGameManager : MonoBehaviour
     void Start()
     {
         scoreText.text = score.ToString();
-
+        coinScore.text = "" + PlayerPrefs.GetInt("coins", 0);
 
         spawnTimeForRoids = new IntRange(min_time_to_spawn_roids, max_time_to_spawn_roids);
         numberOfRoadsToSpawn = new IntRange(min_number_of_roids, max_number_of_roids);
@@ -73,6 +77,16 @@ public class ProceduralGameManager : MonoBehaviour
         Destroy(gameObject);
     }
 
+    public void coinPickedUp(int pointsToAdd)
+    {
+        int coins = PlayerPrefs.GetInt("coins", 0);
+        coins += pointsToAdd;
+
+        coinScore.text = "" + coins;
+
+        PlayerPrefs.SetInt("coins", coins);
+        PlayerPrefs.Save();
+    }
 
     public void scored(int pointsToAdd)
     {
@@ -96,13 +110,19 @@ public class ProceduralGameManager : MonoBehaviour
 
     public void level_complete()
     {
-        lvlCreator.AddARoom();
+        Room room = lvlCreator.AddARoom();
+
+        if (score >= starting_level_for_coins)
+        {
+            lvlCreator.spawn_coins(room, 1);
+        }
+
         return;
     }
 
     private void Update()
     {
-        if (score >= starting_level_for_roids) 
+        if (score >= starting_level_for_roids)
         {
             current_spawn_time += Time.deltaTime;
 
@@ -112,7 +132,7 @@ public class ProceduralGameManager : MonoBehaviour
                 next_spawn_time = spawnTimeForRoids.Random;
                 lvlCreator.spawn_roids(numberOfRoadsToSpawn);
             }
-        
+
         }
 
         if (debug)

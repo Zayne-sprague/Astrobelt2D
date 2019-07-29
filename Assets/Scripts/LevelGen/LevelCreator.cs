@@ -38,6 +38,7 @@ public class LevelCreator : MonoBehaviour
 
     [SerializeField] FlyingAsteroid flying_roids;
 
+    [SerializeField] Coin coin_prefab;
 
     // Debug
     [SerializeField] public bool debug = false;
@@ -113,9 +114,9 @@ public class LevelCreator : MonoBehaviour
         creatingRoom = false;
     }
 
-    public void AddARoom()
+    public Room AddARoom()
     {
-        if (creatingRoom) { return; }
+        if (creatingRoom) { return rooms[last_created_room]; }
         creatingRoom = true;
 
         int next_room_index = (last_created_room + 1) % total_rooms;
@@ -130,9 +131,9 @@ public class LevelCreator : MonoBehaviour
         last_created_room = next_room_index;
         last_created_corridor = next_corridor_index;
 
-       
         creatingRoom = false;
 
+        return rooms[next_room_index];
     }
 
     private void CreateRoom(int roomIndex, int corridorIndex)
@@ -151,6 +152,8 @@ public class LevelCreator : MonoBehaviour
 
         // This works with first and other rooms, since first only matters due to overriden constructor.
         fillInRect(rooms[roomIndex], room_tile);
+
+
     }
 
     private void CreateCorridor(int corridorIndex, int roomIndex)
@@ -255,6 +258,20 @@ public class LevelCreator : MonoBehaviour
     }
 
     /* ^ ROIDS! ^ */
+
+    /* v COINS! v */
+
+    public void spawn_coins(Room room, int value)
+    {
+        int x = (new IntRange(room.xPos, room.xPos + room.width)).Random;
+        int y = (new IntRange(room.yPos, room.yPos + room.height)).Random;
+
+        Coin _coin = Instantiate(coin_prefab, new Vector3(x, y, 0), Quaternion.identity);
+        _coin.value = value;
+        //_coin.buildOut();
+    }
+
+    /* ^ COINS! ^ */
 
 
     // Update is called once per frame
