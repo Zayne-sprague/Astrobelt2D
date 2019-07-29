@@ -63,8 +63,11 @@ public class ProceduralGameManager : MonoBehaviour
             PlayerPrefs.Save();
         }
 
-
         // *************** //
+
+        // Set Death Achievment //
+        Achievements.UnlockAchievement(1);
+        // ******************** //
 
         SceneManager.LoadScene(0);
         Destroy(gameObject);
@@ -75,6 +78,13 @@ public class ProceduralGameManager : MonoBehaviour
     {
         score += pointsToAdd;
         scoreText.text = score.ToString();
+
+        // Set Level 10 achievement //
+        if (score == 10)
+        {
+            Achievements.UnlockAchievement(2);
+        }
+        // ************************ //
 
         // Do this better
         if (!debug)

@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement;
 
 public class Menu : MonoBehaviour
 {
@@ -32,6 +31,16 @@ public class Menu : MonoBehaviour
     public void GoToMainMenu()
     {
         SceneManager.LoadScene(0);
+    }
+
+    public void GoToCharacterSelection()
+    {
+        SceneManager.LoadScene(2);
+    }
+
+    public void GoToChallenges()
+    {
+        SceneManager.LoadScene(3);
     }
 
 

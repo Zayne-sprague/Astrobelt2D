@@ -56,6 +56,10 @@ public class PlayerController : MonoBehaviour
         isAlive = true;
         ShipSpeed = InitialShipSpeed;
 
+        int playerID = PlayerPrefs.GetInt("PlayerID", 1);
+        myAnimator.SetInteger("PlayerID", playerID);
+
+
         //ROTATION SETTERS
         times_rotated = 0;
         m_Lens = vcam.m_Lens;
@@ -95,8 +99,9 @@ public class PlayerController : MonoBehaviour
 
     private void die()
     {
-        if (myBodyCollider.IsTouchingLayers(LayerMask.GetMask("Astroids"))){
+        if (myBodyCollider.IsTouchingLayers(LayerMask.GetMask("Astroids")) && isAlive){
             myAnimator.SetBool("Dead", true);
+            myAnimator.SetInteger("PlayerID", 0);
             isAlive = false;
 
             StartCoroutine(deathPause());
