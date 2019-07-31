@@ -43,5 +43,14 @@ public class Menu : MonoBehaviour
         SceneManager.LoadScene(3);
     }
 
+    // scene 4 is game over
+
+    public void GoToSettings()
+    {
+        SceneManager.LoadScene(5);
+    }
+
+
+
 
 }
