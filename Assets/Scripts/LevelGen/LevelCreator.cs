@@ -30,6 +30,8 @@ public class LevelCreator : MonoBehaviour
     [SerializeField] public int edge_padding = 1;
     [SerializeField] public int corridor_padding = 1;
 
+    [SerializeField] public float time_to_collapse = 5f;
+
     [SerializeField] GameObject wall_tile;
     [SerializeField] GameObject room_tile;
     [SerializeField] GameObject corridor_tile;
@@ -123,7 +125,7 @@ public class LevelCreator : MonoBehaviour
         int next_corridor_index = (last_created_corridor + 1) % (total_rooms - 1);
 
         fillInRect(rooms[next_room_index], wall_tile);
-        fillInRect(corridors[next_corridor_index], wall_tile);
+        StartCoroutine(fillInRect(corridors[next_corridor_index], wall_tile, 0, 0, true));
 
         CreateCorridor(next_corridor_index, last_created_room);
         CreateRoom(next_room_index, next_corridor_index);
@@ -163,8 +165,7 @@ public class LevelCreator : MonoBehaviour
         corridors[corridorIndex].SetupCorridor(rooms[roomIndex], rooms, corridorLength, roomWidth, roomHeight, cols, rows, edge_padding);
 
         item_generator.SpawnGoal(corridors[corridorIndex], corridor_goal, edge_padding);
-
-        fillInRect(corridors[corridorIndex], corridor_tile);
+        StartCoroutine(fillInRect(corridors[corridorIndex], corridor_tile));
 
     }
 
@@ -186,24 +187,12 @@ public class LevelCreator : MonoBehaviour
         fillInRect(room.xPos, room.yPos, room.width, room.height, prefab, xOffset, yOffset);
     }
 
-    private void fillInRect(Corridor corridor, GameObject prefab, int xOffset = 0, int yOffset = 0)
-    {
 
-        // Add the offset to make corridors wider if needed.
-        if (corridor.direction == Direction.East || corridor.direction == Direction.West)
-        {
-            yOffset += corridor_padding;
-        }
-        else
-        {
-            xOffset += corridor_padding;
-        }
 
-        fillInRect(corridor.x, corridor.y, corridor.width, corridor.height, prefab, xOffset, yOffset);
-    }
 
     private void fillInRect(int xPos, int yPos, int width, int height, GameObject prefab, int xOffset = 0, int yOffset = 0)
     {
+
         for (int x = xPos - xOffset; x < xPos + width + xOffset; x++)
         {
             for (int y = yPos - yOffset; y < yPos + height + yOffset; y++)
@@ -211,7 +200,10 @@ public class LevelCreator : MonoBehaviour
                 createTile(x, y, prefab);
             }
         }
+        
+
     }
+
 
     /* Tile constructors */
 
@@ -268,6 +260,7 @@ public class LevelCreator : MonoBehaviour
 
         Coin _coin = Instantiate(coin_prefab, new Vector3(x, y, 0), Quaternion.identity);
         _coin.value = value;
+
         //_coin.buildOut();
     }
 
@@ -290,4 +283,120 @@ public class LevelCreator : MonoBehaviour
             }
         }
     }
+
+
+    // * fill in a corridor blehg * //
+    private IEnumerator fillInRect(Corridor corridor, GameObject prefab, int xOffset = 0, int yOffset = 0, bool collapse_slowly = false)
+    {
+        int xPos = corridor.x;
+        int yPos = corridor.y;
+        int width = corridor.width;
+        int height = corridor.height;
+
+        // Add the offset to make corridors wider if needed.
+        if (corridor.direction == Direction.East)
+        {
+            yOffset += corridor_padding;
+
+            for (int x = xPos - xOffset; x < xPos + width + xOffset; x++)
+            {
+                float sec = 0;
+
+
+                while (sec < (time_to_collapse / width) && collapse_slowly)
+                {
+                    if (tiles[xPos + width + 1][yPos].name == "WallTile(Clone)") { collapse_slowly = false; }
+
+                    sec += Time.deltaTime;
+                    yield return 0;
+                }
+
+                for (int y = yPos - yOffset; y < yPos + height + yOffset; y++)
+                {
+
+                    createTile(x, y, prefab);
+
+                }
+            }
+
+
+
+        }
+        else if (corridor.direction == Direction.West)
+        {
+            yOffset += corridor_padding;
+
+           
+
+            for (int x = xPos + width + xOffset - 1; x >= xPos - xOffset; x--)
+            {
+                float sec = 0;
+
+                while (sec < (time_to_collapse / width) && collapse_slowly)
+                {
+                    if (tiles[xPos - 1][yPos].name == "WallTile(Clone)") { collapse_slowly = false; }
+
+                    sec += Time.deltaTime;
+                    yield return 0;
+                }
+
+                for (int y = yPos - yOffset; y < yPos + height + yOffset; y++)
+                {
+                    createTile(x, y, prefab);
+                }
+            }
+        }
+        else if (corridor.direction == Direction.North)
+        {
+            xOffset += corridor_padding;
+
+            for (int y = yPos - yOffset; y < yPos + height + yOffset; y++)
+            {
+                float sec = 0;
+
+                while (sec < (time_to_collapse / height) && collapse_slowly)
+                {
+                    if (tiles[xPos][yPos + height + 1].name == "WallTile(Clone)") { collapse_slowly = false; }
+
+                    sec += Time.deltaTime;
+                    yield return 0;
+                }
+
+                for (int x = xPos + width + xOffset - 1; x >= xPos - xOffset; x--)
+                {
+
+                    createTile(x, y, prefab);
+                }
+            }
+
+        }
+        else
+        {
+            xOffset += corridor_padding;
+
+            for (int y = yPos + height + yOffset - 1; y >= yPos - yOffset; y--)
+            {
+                float sec = 0;
+
+                while (sec < (time_to_collapse / height) && collapse_slowly)
+                {
+                    if (tiles[xPos][yPos - 1].name == "WallTile(Clone)") { collapse_slowly = false; }
+
+                    sec += Time.deltaTime;
+                    yield return 0;
+                }
+
+                for (int x = xPos + width + xOffset - 1; x >= xPos - xOffset; x--)
+                {
+
+                    createTile(x, y, prefab);
+                }
+            }
+        }
+
+        
+
+
+    }
 }
+

@@ -142,4 +142,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed591bba7ab6e46b1b0863267a6eeded, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  total_time_to_create_room: 3
+  total_time_to_create_room: 1
+  pointsToRecieve: 1

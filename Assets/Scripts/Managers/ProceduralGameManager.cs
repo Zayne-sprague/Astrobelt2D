@@ -9,6 +9,7 @@ public class ProceduralGameManager : MonoBehaviour
     [SerializeField] Text scoreText;
     [SerializeField] Text coinScore;
     [SerializeField] public int score = 0;
+    private int current_game_flubes = 0;
     [SerializeField] LevelCreator lvlCreator;
     [SerializeField] PlayerController player;
 
@@ -59,28 +60,39 @@ public class ProceduralGameManager : MonoBehaviour
 
     public void ProcessPlayerDeath()
     {
+
+
+
+        PlayerPrefs.SetInt("last_game_score", score);
+        PlayerPrefs.SetInt("last_game_fluberions", current_game_flubes);
+
+
         // Save high score //
 
         if (PlayerPrefs.GetInt("highscore") < score)
         {
             PlayerPrefs.SetInt("highscore", score);
-            PlayerPrefs.Save();
         }
 
         // *************** //
+
+        PlayerPrefs.Save();
+
 
         // Set Death Achievment //
         Achievements.UnlockAchievement(1);
         // ******************** //
 
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(4);
         Destroy(gameObject);
     }
 
     public void coinPickedUp(int pointsToAdd)
     {
         int coins = PlayerPrefs.GetInt("coins", 0);
+
         coins += pointsToAdd;
+        current_game_flubes += pointsToAdd;
 
         coinScore.text = "" + coins;
 
