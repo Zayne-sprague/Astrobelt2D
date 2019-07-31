@@ -1094,5 +1094,20 @@ PrefabInstance:
       propertyPath: challenger
       value: 
       objectReference: {fileID: 706693264298444678}
+    - target: {fileID: 4698831805321887504, guid: cfc024ec123d14dbdb6b150875934f34,
+        type: 3}
+      propertyPath: max_number_of_roids
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4698831805321887504, guid: cfc024ec123d14dbdb6b150875934f34,
+        type: 3}
+      propertyPath: min_time_to_spawn_roids
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4698831805321887504, guid: cfc024ec123d14dbdb6b150875934f34,
+        type: 3}
+      propertyPath: max_time_to_spawn_roids
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cfc024ec123d14dbdb6b150875934f34, type: 3}
