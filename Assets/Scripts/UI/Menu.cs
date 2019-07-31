@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using DarkTonic.MasterAudio;
 
 public class Menu : MonoBehaviour
 {
@@ -51,6 +52,11 @@ public class Menu : MonoBehaviour
     }
 
 
-
+    public void reset_player_prefs()
+    {
+        PlayerPrefs.DeleteAll();
+        MasterAudio.PlaylistsMuted = false; // manual reset for this
+        SceneManager.LoadScene(0); // reload
+    }
 
 }
