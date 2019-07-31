@@ -260,7 +260,7 @@ PrefabInstance:
     - target: {fileID: 4777306056155281661, guid: 1f8984d17ca6b4f6ead9bc4b510f9c5b,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4777306056155281656, guid: 1f8984d17ca6b4f6ead9bc4b510f9c5b,
         type: 3}
@@ -317,20 +317,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4777306056155281657, guid: 1f8984d17ca6b4f6ead9bc4b510f9c5b,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4777306056155281659, guid: 1f8984d17ca6b4f6ead9bc4b510f9c5b,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1f8984d17ca6b4f6ead9bc4b510f9c5b, type: 3}
---- !u!114 &197468434 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1775514170823787297, guid: 1f8984d17ca6b4f6ead9bc4b510f9c5b,
-    type: 3}
-  m_PrefabInstance: {fileID: 197468433}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 93b5a8378131f44a28c44d165e164b5f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &696454116
 GameObject:
   m_ObjectHideFlags: 0
@@ -789,6 +787,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d6d3922c19a24370809e1a935b63ec7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1775514170823787297 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1775514170823787297, guid: 1f8984d17ca6b4f6ead9bc4b510f9c5b,
+    type: 3}
+  m_PrefabInstance: {fileID: 197468433}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93b5a8378131f44a28c44d165e164b5f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &6675835527158473040
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -863,6 +873,11 @@ PrefabInstance:
       objectReference: {fileID: 1554448365}
     - target: {fileID: 4698831805321887504, guid: cfc024ec123d14dbdb6b150875934f34,
         type: 3}
+      propertyPath: coinScore
+      value: 
+      objectReference: {fileID: 696454118}
+    - target: {fileID: 4698831805321887504, guid: cfc024ec123d14dbdb6b150875934f34,
+        type: 3}
       propertyPath: lvlCreator
       value: 
       objectReference: {fileID: 1995712875}
@@ -870,42 +885,6 @@ PrefabInstance:
         type: 3}
       propertyPath: player
       value: 
-      objectReference: {fileID: 197468434}
-    - target: {fileID: 4698831805321887504, guid: cfc024ec123d14dbdb6b150875934f34,
-        type: 3}
-      propertyPath: starting_level_for_roids
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 4698831805321887504, guid: cfc024ec123d14dbdb6b150875934f34,
-        type: 3}
-      propertyPath: debug_Timer
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 4698831805321887504, guid: cfc024ec123d14dbdb6b150875934f34,
-        type: 3}
-      propertyPath: min_time_to_spawn_roids
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4698831805321887504, guid: cfc024ec123d14dbdb6b150875934f34,
-        type: 3}
-      propertyPath: max_time_to_spawn_roids
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4698831805321887504, guid: cfc024ec123d14dbdb6b150875934f34,
-        type: 3}
-      propertyPath: debug
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4698831805321887504, guid: cfc024ec123d14dbdb6b150875934f34,
-        type: 3}
-      propertyPath: coin
-      value: 
-      objectReference: {fileID: 8423740382143032263, guid: 2c9e999589044483ebfa17d8b3b34cbc,
-        type: 3}
-    - target: {fileID: 4698831805321887504, guid: cfc024ec123d14dbdb6b150875934f34,
-        type: 3}
-      propertyPath: coinScore
-      value: 
-      objectReference: {fileID: 696454118}
+      objectReference: {fileID: 1775514170823787297}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cfc024ec123d14dbdb6b150875934f34, type: 3}

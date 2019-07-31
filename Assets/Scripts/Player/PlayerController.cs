@@ -26,6 +26,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float percentSpentZoomIn = .3f;
     [SerializeField] float percentSpentRotatingShip = .2f;
 
+    [SerializeField] Sprite[] sprites;
+
     public Quaternion fromAngle;
     public Quaternion toAngle;
 
@@ -39,7 +41,8 @@ public class PlayerController : MonoBehaviour
 
     Rigidbody2D myRigidBody;
     PolygonCollider2D myBodyCollider;
-    Animator myAnimator;
+    public Animator myAnimator;
+    public SpriteRenderer myRender;
 
     public bool isAlive;
 
@@ -53,12 +56,13 @@ public class PlayerController : MonoBehaviour
         myRigidBody = GetComponent<Rigidbody2D>();
         myBodyCollider = GetComponent<PolygonCollider2D>();
         myAnimator = GetComponent<Animator>();
+        myRender = GetComponent<SpriteRenderer>();
         isAlive = true;
         ShipSpeed = InitialShipSpeed;
 
         int playerID = PlayerPrefs.GetInt("PlayerID", 1);
         myAnimator.SetInteger("PlayerID", playerID);
-
+        myRender.sprite = sprites[playerID - 1];
 
         //ROTATION SETTERS
         times_rotated = 0;
@@ -74,6 +78,13 @@ public class PlayerController : MonoBehaviour
             myRigidBody.velocity = new Vector2(0f,0f);
             return;
         }
+
+        if (isAlive && !myAnimator.enabled && myAnimator.GetInteger("PlayerID") == PlayerPrefs.GetInt("PlayerID", 1) && myRender.sprite == sprites[PlayerPrefs.GetInt("PlayerID", 1) - 1])
+        {
+            myAnimator.enabled = true;
+            myRender.enabled = true;
+        }
+
         rotateMain();
         die();
     }

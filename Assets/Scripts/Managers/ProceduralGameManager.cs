@@ -21,7 +21,6 @@ public class ProceduralGameManager : MonoBehaviour
 
     [SerializeField] public int starting_level_for_coins = 0;
 
-
     private IntRange spawnTimeForRoids;
     private IntRange numberOfRoadsToSpawn;
 
