@@ -50,11 +50,11 @@ public class ItemGenerator : MonoBehaviour
                 inst.BuildCollisionBox(1, 1 + (edge_padding * 2));
                 break;
             case Direction.South:
-                inst = Instantiate(prefab, new Vector3(x, (float)(y + length), 0), Quaternion.identity);
+                inst = Instantiate(prefab, new Vector3(x, (float)(y + offset_from_edge), 0), Quaternion.identity);
                 inst.BuildCollisionBox(1 + (edge_padding * 2), 1);
                 break;
             default: //west
-                inst = Instantiate(prefab, new Vector3((float)(x + length), corridor.y, 0), Quaternion.identity);
+                inst = Instantiate(prefab, new Vector3((float)(x + offset_from_edge), corridor.y, 0), Quaternion.identity);
                 inst.BuildCollisionBox(1, 1 + (edge_padding * 2));
                 break;
         }
