@@ -12,6 +12,7 @@ public class ProceduralGameManager : MonoBehaviour
     private int current_game_flubes = 0;
     [SerializeField] LevelCreator lvlCreator;
     [SerializeField] PlayerController player;
+    [SerializeField] Achievements challenger;
 
     [SerializeField] public int min_time_to_spawn_roids = 10;
     [SerializeField] public int max_time_to_spawn_roids = 20;
@@ -55,6 +56,8 @@ public class ProceduralGameManager : MonoBehaviour
         numberOfRoadsToSpawn = new IntRange(min_number_of_roids, max_number_of_roids);
 
         next_spawn_time = (float)spawnTimeForRoids.Random;
+
+        challenger = FindObjectOfType<Achievements>();
     }
 
     public void ProcessPlayerDeath()
@@ -79,7 +82,7 @@ public class ProceduralGameManager : MonoBehaviour
 
 
         // Set Death Achievment //
-        Achievements.UnlockAchievement(1);
+        challenger._UnlockAchievement(1);
         // ******************** //
 
         SceneManager.LoadScene(4);
@@ -107,7 +110,7 @@ public class ProceduralGameManager : MonoBehaviour
         // Set Level 10 achievement //
         if (score == 10)
         {
-            Achievements.UnlockAchievement(2);
+            challenger._UnlockAchievement(2);
         }
         // ************************ //
 

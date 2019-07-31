@@ -1243,7 +1243,7 @@ PrefabInstance:
     - target: {fileID: 2984625182801132763, guid: fde0bc101e25b4b97ac9ed914a60d57c,
         type: 3}
       propertyPath: m_Text
-      value: 'Novice
+      value: 'Nub Stuff
 
 '
       objectReference: {fileID: 0}
@@ -1665,6 +1665,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2984625182801132763, guid: fde0bc101e25b4b97ac9ed914a60d57c,
+        type: 3}
+      propertyPath: m_Text
+      value: Sweet Death
       objectReference: {fileID: 0}
     - target: {fileID: 2984625181192663442, guid: fde0bc101e25b4b97ac9ed914a60d57c,
         type: 3}
