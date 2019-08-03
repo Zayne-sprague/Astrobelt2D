@@ -7,11 +7,11 @@ public class FlyingAsteroid : MonoBehaviour
 
     [SerializeField] public GameObject[] assets;
 
-    [SerializeField] public int Max_Speed = 5;
-    [SerializeField] public int Min_Speed = 2;
-    public IntRange speed;
+    [SerializeField] public float Max_Speed = 5;
+    [SerializeField] public float Min_Speed = 2;
 
-    private int time_to_cross;
+    private float time_to_cross;
+
     private float t;
 
     private GameObject asteroid;
@@ -39,11 +39,9 @@ public class FlyingAsteroid : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+    
+        time_to_cross = Random.Range(Min_Speed, Max_Speed);
 
-        speed = new IntRange(Min_Speed, Max_Speed);
-
-        time_to_cross = speed.Random;
-            
     }
 
     public void BuildOut(Room room)
