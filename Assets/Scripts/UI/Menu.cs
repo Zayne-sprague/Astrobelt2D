@@ -11,15 +11,18 @@ public class Menu : MonoBehaviour
 
     private void Start()
     {
-        int score = PlayerPrefs.GetInt("highscore");
+        if (highscoreLabel)
+        {
+            int score = PlayerPrefs.GetInt("highscore");
 
-        if (score > 0)
-        {
-            highscoreLabel.text = "High Score: " + score;
-        }
-        else
-        {
-            highscoreLabel.text = "";
+            if (score > 0)
+            {
+                highscoreLabel.text = "High Score: " + score;
+            }
+            else
+            {
+                highscoreLabel.text = "";
+            }
         }
     }
 
