@@ -46,23 +46,28 @@ MonoBehaviour:
   rows: 100
   cols: 100
   total_rooms: 3
-  minRoomWidth: 3
-  maxRoomWidth: 10
-  minRoomHeight: 3
-  maxRoomHeight: 10
-  minCorridorLength: 1
-  maxCorridorLength: 2
+  minRoomWidth: 8
+  maxRoomWidth: 12
+  minRoomHeight: 8
+  maxRoomHeight: 12
+  minCorridorLength: 4
+  maxCorridorLength: 7
   edge_padding: 1
   corridor_padding: 1
-  wall_tile: {fileID: 4895242417562054580, guid: db5dd6bfe8a1d44528830582cfcc2750,
+  time_to_collapse: 5
+  wall_tile: {fileID: 4538757508454739895, guid: 76b669ffeab074bd896679e30a1b0314,
     type: 3}
   room_tile: {fileID: 8186025989054468226, guid: 205adf9b3f036489f930f225bc3961dd,
     type: 3}
   corridor_tile: {fileID: 8298940338877254665, guid: 2d5c22f3ae2234bf995728faf0ad95b4,
     type: 3}
+  background_tile: {fileID: 3449982098105457522, guid: d5447b48538b2430e856605e77561c5d,
+    type: 3}
   corridor_goal: {fileID: -2562083094168572546, guid: 089a3abc1bbf44e6ea6efa603c4e8ba6,
     type: 3}
   flying_roids: {fileID: 2029634084205546417, guid: e89a4c91ea2a34df089a417c2eb53ae4,
     type: 3}
-  debug: 1
-  debug_Timer: 0.5
+  coin_prefab: {fileID: 8423740382143032263, guid: 2c9e999589044483ebfa17d8b3b34cbc,
+    type: 3}
+  debug: 0
+  debug_Timer: 3

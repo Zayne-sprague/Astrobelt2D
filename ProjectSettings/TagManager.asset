@@ -41,6 +41,9 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Background
+    uniqueID: 4182124985
+    locked: 0
   - name: Astroids
     uniqueID: 1394060435
     locked: 0

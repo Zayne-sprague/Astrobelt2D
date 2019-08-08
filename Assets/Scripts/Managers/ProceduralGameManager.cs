@@ -50,7 +50,7 @@ public class ProceduralGameManager : MonoBehaviour
     void Start()
     {
         scoreText.text = score.ToString();
-        coinScore.text = "" + PlayerPrefs.GetInt("coins", 0);
+        //coinScore.text = "" + PlayerPrefs.GetInt("coins", 0);
 
         spawnTimeForRoids = new IntRange(min_time_to_spawn_roids, max_time_to_spawn_roids);
         numberOfRoadsToSpawn = new IntRange(min_number_of_roids, max_number_of_roids);
@@ -126,17 +126,17 @@ public class ProceduralGameManager : MonoBehaviour
     {
         Room room = lvlCreator.AddARoom();
 
-        if (score >= starting_level_for_coins)
+        /*if (score >= starting_level_for_coins)
         {
             lvlCreator.spawn_coins(room, 1);
-        }
+        }*/
 
         return;
     }
 
     private void Update()
     {
-        if (score >= starting_level_for_roids)
+        /*if (score >= starting_level_for_roids)
         {
             current_spawn_time += Time.deltaTime;
 
@@ -147,7 +147,7 @@ public class ProceduralGameManager : MonoBehaviour
                 lvlCreator.spawn_roids(numberOfRoadsToSpawn);
             }
 
-        }
+        }*/
 
         if (debug)
         {

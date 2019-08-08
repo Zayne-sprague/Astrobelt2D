@@ -32,16 +32,19 @@ public class SelectorSlider : MonoBehaviour
     //private Vector2 mid_tile_image_size = new Vector2(156.6f, 128.9f);
     private Vector2 mid_tile_image_size = new Vector2(20.7f, 19.55f);
     private Vector3 mid_tile_image_rotation = new Vector3(0, 0, 0);
+    private Vector3 mid_tile_image_scale = new Vector3(2, 2, 1);
 
     private Vector3 left_tile_image_location = new Vector3(50.325f, 0f, 0);
     //private Vector2 left_tile_image_size = new Vector2(89.3f, 128.9f);
     private Vector2 left_tile_image_size = new Vector2(50.325f, 25.00001f);
     private Vector3 left_tile_image_rotation = new Vector3(0, 0, -23.066f);
+    private Vector3 left_tile_image_scale = new Vector3(2, 2, 1);
 
     private Vector3 right_tile_image_location = new Vector3(50.325f, 0f, 0);
     //private Vector2 right_tile_image_size = new Vector2(89.3f, 128.9f);
     private Vector2 right_tile_image_size = new Vector2(50.325f, 25f);
     private Vector3 right_tile_image_rotation = new Vector3(0, 0, 23.066f);
+    private Vector3 right_tile_image_scale = new Vector3(2, 2, 1);
 
     private SelectorProfile left_tile;
     private SelectorProfile mid_tile;
@@ -94,6 +97,7 @@ public class SelectorSlider : MonoBehaviour
         left_tile.profileImage.rectTransform.SetTop(left_tile_image_location.y);
         left_tile.profileImage.rectTransform.SetRight(left_tile_image_size.x);
         left_tile.profileImage.rectTransform.SetBottom(left_tile_image_size.y);
+        left_tile.profileImage.rectTransform.localScale = left_tile_image_scale;
 
 
         left_tile.profileImage.rectTransform.eulerAngles = left_tile_image_rotation;
@@ -116,6 +120,7 @@ public class SelectorSlider : MonoBehaviour
         mid_tile.profileImage.rectTransform.SetRight(mid_tile_image_size.x);
         mid_tile.profileImage.rectTransform.SetBottom(mid_tile_image_size.y);
         mid_tile.profileImage.rectTransform.eulerAngles = mid_tile_image_rotation;
+        mid_tile.profileImage.rectTransform.localScale = mid_tile_image_scale;
 
         mid_tile.profileImage.preserveAspect = true;
 
@@ -137,6 +142,7 @@ public class SelectorSlider : MonoBehaviour
         right_tile.profileImage.rectTransform.SetRight(right_tile_image_size.x);
         right_tile.profileImage.rectTransform.SetBottom(right_tile_image_size.y);
         right_tile.profileImage.rectTransform.eulerAngles = right_tile_image_rotation;
+        right_tile.profileImage.rectTransform.localScale = right_tile_image_scale;
 
 
         right_tile.button.onClick.AddListener(delegate { BuildOutPanels(curr_index, next_index, next_index + 1 > imageProfiles.Length - 1 ? 0 : next_index + 1); });

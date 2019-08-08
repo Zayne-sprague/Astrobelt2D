@@ -44,7 +44,9 @@ public class Achievements : MonoBehaviour
 
     public bool _UnlockAchievement(int id)
     {
-        bool unlocked = PlayerPrefs.GetInt("Ach:" + id, 0) > 0;
+        return false;
+
+        /*bool unlocked = PlayerPrefs.GetInt("Ach:" + id, 0) > 0;
         if (!unlocked)
         {
             PlayerPrefs.SetInt("Ach:" + id, 1);
@@ -53,7 +55,7 @@ public class Achievements : MonoBehaviour
             return true;
         }
 
-        return false;
+        return false;*/
     }
 
     void showOffChallenge(int id)

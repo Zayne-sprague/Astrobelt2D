@@ -35,6 +35,7 @@ public class LevelCreator : MonoBehaviour
     [SerializeField] GameObject wall_tile;
     [SerializeField] GameObject room_tile;
     [SerializeField] GameObject corridor_tile;
+    [SerializeField] GameObject background_tile;
 
     [SerializeField] CorridorGoal corridor_goal;
 
@@ -48,6 +49,7 @@ public class LevelCreator : MonoBehaviour
     private float debug_current_timer = 0;
 
     private GameObject board_holder;
+    private GameObject background_holder;
 
     private GameObject[][] tiles;
     private Room[] rooms;
@@ -98,6 +100,7 @@ public class LevelCreator : MonoBehaviour
 
         //Holds all tiles
         board_holder = new GameObject("Board Holder");
+        background_holder = new GameObject("Background Holder");
 
         // Fill board with wall tiles
         fillOutBoard();
@@ -177,6 +180,7 @@ public class LevelCreator : MonoBehaviour
         {
             for (int y = 0; y < rows; y++)
             {
+                //createPermanentTile(x, y, background_tile);
                 createTile(x, y, wall_tile);
             }
         }
@@ -221,6 +225,21 @@ public class LevelCreator : MonoBehaviour
 
         tiles[xPos][yPos] = tileInstance;
         tileInstance.transform.parent = board_holder.transform;
+    }
+
+    private void createPermanentTile(int xPos, int yPos, GameObject prefab)
+    {
+        // Before we create a tile - we have to destroy anything that was there previously.
+        destroyTile(xPos, yPos);
+
+        float xCoord = (float)xPos;
+        float yCoord = (float)yPos;
+
+        Vector3 position = new Vector3(xCoord, yCoord, 0f);
+
+        GameObject tileInstance = Instantiate(prefab, position, Quaternion.identity);
+
+        tileInstance.transform.parent = background_holder.transform;
     }
 
     private void destroyTile(int xPos, int yPos)
