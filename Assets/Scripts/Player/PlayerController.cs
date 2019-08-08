@@ -33,6 +33,7 @@ public class PlayerController : MonoBehaviour
 
     private int times_rotated;
     private bool rotating;
+    private bool double_turn = false;
     private bool cameraRotating;
     private LensSettings m_Lens;
     private float startingZoom;
@@ -168,18 +169,28 @@ public class PlayerController : MonoBehaviour
         bool mouseClick = CrossPlatformInputManager.GetButtonDown("Fire1");
         bool touchEvent = Input.touchCount == 1 && Input.GetTouch(0).phase == TouchPhase.Began;
 
-        if ( (mouseClick || touchEvent) && !rotating)
+        if ((mouseClick || touchEvent) && (!rotating || !double_turn))
         {
             times_rotated = (times_rotated + 1) % 4;
 
 
-            ShipSpeed = ShipSpeed - DecreasePerTurn;
-            myRigidBody.velocity = getMovement();
+            if (!double_turn && rotating)
+            {
+                double_turn = true;
+                ShipSpeed = ShipSpeed - (DecreasePerTurn * 4);
+                myRigidBody.velocity = getMovement();
+                return;
+            }
+            else
+            {
+                ShipSpeed = ShipSpeed - DecreasePerTurn;
+                myRigidBody.velocity = getMovement();
+            }
 
-           
 
 
-           
+
+
             // zoom out
             StopAllCoroutines();
 
@@ -200,7 +211,7 @@ public class PlayerController : MonoBehaviour
         float time_rotating_player = percentSpentRotatingShip * secondsToRotate;
         float seconds = 0f;
 
-        float new_angle = 90 * (times_rotated);
+        float new_angle = 90 * (times_rotated) + (double_turn ? 90 : 0);
 
         while (seconds <= time_rotating_player)
         {
