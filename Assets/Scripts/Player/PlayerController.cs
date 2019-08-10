@@ -25,6 +25,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float percentSpentZoomOut = .3f;
     [SerializeField] float percentSpentZoomIn = .3f;
     [SerializeField] float percentSpentRotatingShip = .2f;
+    [SerializeField] float percentForDoubleTapHotSpot = .2f;
+
+    private float time_of_rotation_begin;
 
     [SerializeField] Sprite[] sprites;
 
@@ -164,17 +167,25 @@ public class PlayerController : MonoBehaviour
     // MAIN FUNCTION USED TO CONTROL ROTATION  - the camera is the last to finish rotating, wait on it.
     private void rotateMain()
     {   
-        if (cameraRotating || !(ShipSpeed - DecreasePerTurn > MinimumSpeed)) { return; }
+        //early escape
+        // either no gas or have rotated two times 
+        if ((cameraRotating && double_turn) || !(ShipSpeed - DecreasePerTurn > MinimumSpeed)) { return; }
+
+        // Save the time for the initial rotation
+        if (!cameraRotating) { time_of_rotation_begin = Time.fixedTime; }
+
+        // Gotta hit the hot spot
+        if (cameraRotating && !double_turn && ((Time.fixedTime - time_of_rotation_begin) > (secondsToRotate * percentForDoubleTapHotSpot))){ return;  }
 
         bool mouseClick = CrossPlatformInputManager.GetButtonDown("Fire1");
         bool touchEvent = Input.touchCount == 1 && Input.GetTouch(0).phase == TouchPhase.Began;
 
-        if ((mouseClick || touchEvent) && (!rotating || !double_turn))
+        if (mouseClick || touchEvent)
         {
             times_rotated = (times_rotated + 1) % 4;
 
 
-            if (!double_turn && rotating)
+            if (!double_turn && cameraRotating)
             {
                 double_turn = true;
                 ShipSpeed = ShipSpeed - (DecreasePerTurn * 4);
@@ -211,13 +222,25 @@ public class PlayerController : MonoBehaviour
         float time_rotating_player = percentSpentRotatingShip * secondsToRotate;
         float seconds = 0f;
 
-        float new_angle = 90 * (times_rotated) + (double_turn ? 90 : 0);
+        bool picked_up_double_turn = false;
+
+        float new_angle = 90 * (times_rotated);
+        float turn_angle = 90f;
 
         while (seconds <= time_rotating_player)
         {
+            if (!picked_up_double_turn && double_turn)
+            {
+                picked_up_double_turn = true;
+
+                time_rotating_player *= 2;
+                turn_angle *= 2;
+                new_angle = 90 * (times_rotated);
+
+            }
 
             seconds += Time.deltaTime; 
-            float dist = (Time.deltaTime / time_rotating_player) * 90f;
+            float dist = (Time.deltaTime / time_rotating_player) * turn_angle;
             this.transform.rotation = Quaternion.Euler(0, 0, dist + transform.localEulerAngles.z);
 
             yield return 0;
@@ -229,13 +252,15 @@ public class PlayerController : MonoBehaviour
         if (percentSpentRotatingShip > percentSpentZoomOut)
         {
             cameraRotating = false;
+            double_turn = false;
+
         }
     }
 
     //Updates the Dutch of the camera - rotating it
     private IEnumerator rotateCamera()
     {
-   
+
         float time_rotating_camera = percentSpentZoomOut * secondsToRotate;
         float seconds = 0f;
 
@@ -244,8 +269,21 @@ public class PlayerController : MonoBehaviour
 
         float turn = 90f; //times_rotated % 2 == 0 ? 90f - m_Lens.Dutch : m_Lens.Dutch;
         float previous_dutch = m_Lens.Dutch;
+
+        bool picked_up_double_turn = false;
+
         do
         {
+
+            if (!picked_up_double_turn && double_turn)
+            {
+                picked_up_double_turn = true;
+
+                turn += 90f;
+                time_rotating_camera *= 2;
+
+            }
+
             float dutch_changing = (Time.deltaTime / time_rotating_camera) * turn;
             m_Lens.Dutch = m_Lens.Dutch + dutch_changing; //times_rotated % 2 == 0 ? (m_Lens.Dutch + dutch_changing) : (m_Lens.Dutch - dutch_changing);
             vcam.m_Lens = m_Lens;
@@ -263,6 +301,8 @@ public class PlayerController : MonoBehaviour
         if (percentSpentRotatingShip <= percentSpentZoomOut)
         {
             cameraRotating = false;
+            double_turn = false;
+
         }
     }
 
@@ -323,7 +363,6 @@ public class PlayerController : MonoBehaviour
         }
 
         m_Lens.OrthographicSize = startingZoom;
-
     }
 
     public void increaseShipSpeed()

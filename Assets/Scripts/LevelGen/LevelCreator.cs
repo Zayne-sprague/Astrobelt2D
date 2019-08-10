@@ -59,6 +59,7 @@ public class LevelCreator : MonoBehaviour
     private int last_created_room = 0;
     private int last_created_corridor = 0;
 
+    private IntRange place_star = new IntRange(0, 100);
     private bool creatingRoom = false;
 
     private void Start()
@@ -180,7 +181,10 @@ public class LevelCreator : MonoBehaviour
         {
             for (int y = 0; y < rows; y++)
             {
-                //createPermanentTile(x, y, background_tile);
+                if (place_star.Random > 90)
+                {
+                    createPermanentTile(x, y, background_tile);
+                }
                 createTile(x, y, wall_tile);
             }
         }

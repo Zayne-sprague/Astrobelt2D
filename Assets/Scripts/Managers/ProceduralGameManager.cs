@@ -8,6 +8,8 @@ public class ProceduralGameManager : MonoBehaviour
 {
     [SerializeField] Text scoreText;
     [SerializeField] Text coinScore;
+    [SerializeField] Canvas level_ui;
+    [SerializeField] Canvas gameOver_ui;
     [SerializeField] public int score = 0;
     private int current_game_flubes = 0;
     [SerializeField] LevelCreator lvlCreator;
@@ -63,7 +65,8 @@ public class ProceduralGameManager : MonoBehaviour
     public void ProcessPlayerDeath()
     {
 
-
+        level_ui.gameObject.SetActive(false);
+        gameOver_ui.gameObject.SetActive(true);
 
         PlayerPrefs.SetInt("last_game_score", score);
         PlayerPrefs.SetInt("last_game_fluberions", current_game_flubes);
@@ -85,7 +88,7 @@ public class ProceduralGameManager : MonoBehaviour
         challenger._UnlockAchievement(1);
         // ******************** //
 
-        SceneManager.LoadScene(4);
+        //SceneManager.LoadScene(4);
         Destroy(gameObject);
     }
 

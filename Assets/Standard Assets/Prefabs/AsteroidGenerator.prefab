@@ -45,16 +45,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tileSize: 1
   assets:
-  - {fileID: 3258789205366599348, guid: 10731a21a14df41fb81a2c8b9b9272a8, type: 3}
-  - {fileID: 1673959307810418543, guid: b148cb55900e74be09b12093e5dddbf1, type: 3}
-  - {fileID: 4703606499337457799, guid: e3446d1d42abd42d9a22d9829d568650, type: 3}
-  - {fileID: 4618466379061854355, guid: 1ca0d137577fb40a0ab7ee1546dcd2fe, type: 3}
-  - {fileID: 4075763528345003549, guid: 75290cd2be8594d508c0150db09208c4, type: 3}
-  - {fileID: 4031878047479047824, guid: 010cde5a71d7444e89881f009b608fa5, type: 3}
-  - {fileID: 6613885474997642577, guid: d694c2a4bd1164d61a8bc6672dea7fa3, type: 3}
-  - {fileID: 6608875640306387408, guid: 6aa41edebba6744a8af58b1306a6e291, type: 3}
-  - {fileID: 7752732170753297442, guid: 293adb1ecbb1a45bf9bfb7357c645651, type: 3}
-  - {fileID: 4299854761957565857, guid: 47ac69fee77aa4e12ac71be397d1f41e, type: 3}
+  - {fileID: 2909672623735719346, guid: e01cf3b2a767a4db890d1adf29b796d6, type: 3}
+  - {fileID: 1221937787257032233, guid: 670e86dd7f512464c80261f179222ead, type: 3}
+  - {fileID: 8745312446870798536, guid: c07e7a36356d547d486aac0b2b1c9ca6, type: 3}
   minSize: 1
   maxSize: 3
   roomTile: {fileID: 8186025989054468226, guid: 205adf9b3f036489f930f225bc3961dd,
