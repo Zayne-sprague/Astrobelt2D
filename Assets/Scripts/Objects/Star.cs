@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class Star : MonoBehaviour
 {
-    public IntRange time_to_twinkle = new IntRange(100, 1000);
+    public IntRange time_to_twinkle = new IntRange(0, 10);
 
-    private float twinkle_time;
+    private float twinkle_time = 1;
     private float time;
 
     Animator myanimator;
@@ -22,11 +22,14 @@ public class Star : MonoBehaviour
     void Update()
     {
         time += Time.deltaTime;
-
-        if (time >= twinkle_time)
+        if (time > twinkle_time)
         {
-            myanimator.SetTrigger("twinkle");
+            if (time_to_twinkle.Random > 3)
+            {
+                myanimator.SetTrigger("twinkle");
+            }
             time = 0;
+
         }
     }
 }

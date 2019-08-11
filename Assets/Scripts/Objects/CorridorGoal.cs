@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DarkTonic.MasterAudio;
 
 public class CorridorGoal : MonoBehaviour
 {
@@ -49,6 +50,7 @@ public class CorridorGoal : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        MasterAudio.FireCustomEvent("Scored",transform);
         print("Collision Hit");
         game_manager.scored(pointsToRecieve);
         mySpriteRenderer.enabled = false;

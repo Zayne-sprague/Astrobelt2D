@@ -17,6 +17,12 @@ TextureImporter:
   - first:
       213: -4927137663327927814
     second: gas-from-ship_4
+  - first:
+      213: 6578261378306982622
+    second: gas-from-ship_5
+  - first:
+      213: -7644615059278337957
+    second: gas-from-ship_6
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -113,10 +119,10 @@ TextureImporter:
       name: gas-from-ship_0
       rect:
         serializedVersion: 2
-        x: 32
+        x: 0
         y: 0
-        width: 32
-        height: 32
+        width: 160
+        height: 160
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -124,7 +130,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b774c7c760c3e4b509c01e62729a2375
+      spriteID: 4c7ebf769fce04e2683ccfc688b450a7
       internalID: 4155071072567394613
       vertices: []
       indices: 
@@ -134,10 +140,10 @@ TextureImporter:
       name: gas-from-ship_1
       rect:
         serializedVersion: 2
-        x: 64
+        x: 160
         y: 0
-        width: 32
-        height: 32
+        width: 160
+        height: 160
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -145,7 +151,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d17b3c08c93164e039c673be47a1aeb6
+      spriteID: 3c7aa1f55033b43699b5d48d78124726
       internalID: -1146421361933814206
       vertices: []
       indices: 
@@ -155,10 +161,10 @@ TextureImporter:
       name: gas-from-ship_2
       rect:
         serializedVersion: 2
-        x: 96
+        x: 320
         y: 0
-        width: 32
-        height: 32
+        width: 160
+        height: 160
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -166,7 +172,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 71a4af25defb745d6a441b7f46dbf7d2
+      spriteID: a13f142a8efcc47e3910aaccddfd9d77
       internalID: 708409113143940963
       vertices: []
       indices: 
@@ -176,10 +182,10 @@ TextureImporter:
       name: gas-from-ship_3
       rect:
         serializedVersion: 2
-        x: 128
+        x: 480
         y: 0
-        width: 32
-        height: 32
+        width: 160
+        height: 160
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -187,7 +193,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7e92fce5439694e0b97a3bc665456ae7
+      spriteID: f1390efeb0f88494d832c1d2a16a0bab
       internalID: 2348175078825714409
       vertices: []
       indices: 
@@ -197,10 +203,10 @@ TextureImporter:
       name: gas-from-ship_4
       rect:
         serializedVersion: 2
-        x: 160
+        x: 640
         y: 0
-        width: 32
-        height: 32
+        width: 160
+        height: 160
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -208,8 +214,50 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: db87abc284d1d4fc1b9cc1d9cf52ef68
+      spriteID: 47462d8675c124b158de9b329502e250
       internalID: -4927137663327927814
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gas-from-ship_5
+      rect:
+        serializedVersion: 2
+        x: 800
+        y: 0
+        width: 160
+        height: 160
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fb37e355e9be34f6e8859e774055d293
+      internalID: 6578261378306982622
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gas-from-ship_6
+      rect:
+        serializedVersion: 2
+        x: 960
+        y: 0
+        width: 160
+        height: 160
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5cf621ccdd3f1470a8050024d9111266
+      internalID: -7644615059278337957
       vertices: []
       indices: 
       edges: []
@@ -217,7 +265,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 3a1759e1ede274d598ce27151f6effe7
+    spriteID: b310f08b3c80e424685e485dd9f859d6
     internalID: 0
     vertices: []
     indices: 

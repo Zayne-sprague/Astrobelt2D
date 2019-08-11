@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1966708877146415689}
   - component: {fileID: 551892013262799942}
-  - component: {fileID: 7992854724370172242}
   - component: {fileID: 7159013254121733940}
   m_Layer: 9
   m_Name: medium_asteroid
@@ -70,38 +69,17 @@ SpriteRenderer:
   m_SortingLayerID: 1394060435
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: fd4c56f37e8dd40df8abae7814ef3321, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b54ca60bfcf4b428bb3489fd8df4415b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 12.8, y: 12.8}
+  m_Size: {x: 1.28, y: 1.28}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!50 &7992854724370172242
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1221937787257032233}
-  m_BodyType: 1
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
 --- !u!60 &7159013254121733940
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -119,30 +97,19 @@ PolygonCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 12.8, y: 12.8}
-    newSize: {x: 12.8, y: 12.8}
+    oldSize: {x: 1.28, y: 1.28}
+    newSize: {x: 1.28, y: 1.28}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 0.7133179, y: -1.480423}
-      - {x: 1.0889893, y: -1.0839386}
-      - {x: 1.3095093, y: -0.6625061}
-      - {x: 2.0170898, y: 0.013595581}
-      - {x: 2.4873657, y: 0.30815125}
-      - {x: 2.909668, y: 0.7445526}
-      - {x: 3.1340332, y: 0.818161}
-      - {x: 2.3880615, y: 2.5201569}
-      - {x: 1.020813, y: 3.2496185}
-      - {x: -1.1762695, y: 2.7360535}
-      - {x: -1.9133301, y: 0.5616455}
-      - {x: -2.1488037, y: 0.2503357}
-      - {x: -2.2686157, y: -0.45161438}
-      - {x: -2.52, y: -1.62}
-      - {x: -2.4299998, y: -1.64}
-      - {x: -2.4154663, y: -1.9896545}
-      - {x: -0.75701904, y: -2.2881622}
-      - {x: -0.14202881, y: -2.3992615}
-      - {x: 0.038146973, y: -2.373932}
+    - - {x: -0.00024414062, y: -0.23251343}
+      - {x: 0.12841797, y: -0.06460571}
+      - {x: 0.3071289, y: 0.0688324}
+      - {x: 0.24780273, y: 0.24342346}
+      - {x: 0.115478516, y: 0.31759644}
+      - {x: -0.097717285, y: 0.27970886}
+      - {x: -0.20574951, y: 0.022766113}
+      - {x: -0.23168945, y: -0.18725586}

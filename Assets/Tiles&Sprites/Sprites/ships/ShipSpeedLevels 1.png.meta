@@ -1,28 +1,28 @@
 fileFormatVersion: 2
-guid: acf0dd097661e439c8bc05f697da6ef8
+guid: 04e38da61f75a460b8844329bb51c225
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -671941450269131104
-    second: ShipSpeedLevels_0
+      213: -5462571689531651013
+    second: ShipSpeedLevels 1_0
   - first:
-      213: -4322551461356305843
-    second: ShipSpeedLevels_1
+      213: -480975387488280933
+    second: ShipSpeedLevels 1_1
   - first:
-      213: 69037728469390400
-    second: ShipSpeedLevels_2
+      213: -8359205177975412448
+    second: ShipSpeedLevels 1_2
   - first:
-      213: -4114139907665468508
-    second: ShipSpeedLevels_3
+      213: 4074185508001177527
+    second: ShipSpeedLevels 1_3
   - first:
-      213: 1593365731450314267
-    second: ShipSpeedLevels_4
+      213: 1959937271944707047
+    second: ShipSpeedLevels 1_4
   - first:
-      213: 8859311129646114307
-    second: ShipSpeedLevels_5
+      213: -8667276348813947271
+    second: ShipSpeedLevels 1_5
   - first:
-      213: 768930963972487829
-    second: ShipSpeedLevels_6
+      213: 4691171502948767402
+    second: ShipSpeedLevels 1_6
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -116,13 +116,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: ShipSpeedLevels_0
+      name: ShipSpeedLevels 1_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 32
-        height: 32
+        width: 320
+        height: 320
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -130,20 +130,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 539faa702ec404a15a173b155a4eab57
-      internalID: -671941450269131104
+      spriteID: f052ab3e237014d9b9aa0f5daffebab1
+      internalID: -5462571689531651013
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ShipSpeedLevels_1
+      name: ShipSpeedLevels 1_1
       rect:
         serializedVersion: 2
-        x: 32
+        x: 320
         y: 0
-        width: 32
-        height: 32
+        width: 320
+        height: 320
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -151,20 +151,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 250e582c8f75342a99c56c75b5b621a8
-      internalID: -4322551461356305843
+      spriteID: cb133df7aee7f4625a22ed2779f41af4
+      internalID: -480975387488280933
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ShipSpeedLevels_2
+      name: ShipSpeedLevels 1_2
       rect:
         serializedVersion: 2
-        x: 64
+        x: 640
         y: 0
-        width: 32
-        height: 32
+        width: 320
+        height: 320
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -172,20 +172,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2fff687fffb0b4d118b1a9a59f67dc0a
-      internalID: 69037728469390400
+      spriteID: c25ffb23c4523420c860731e455f75a0
+      internalID: -8359205177975412448
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ShipSpeedLevels_3
+      name: ShipSpeedLevels 1_3
       rect:
         serializedVersion: 2
-        x: 96
+        x: 960
         y: 0
-        width: 32
-        height: 32
+        width: 320
+        height: 320
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -193,20 +193,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c3e6bc0d1f82c46c79b457c009f0bebb
-      internalID: -4114139907665468508
+      spriteID: 7113c35454adf42f0a586b05aa7dc9fc
+      internalID: 4074185508001177527
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ShipSpeedLevels_4
+      name: ShipSpeedLevels 1_4
       rect:
         serializedVersion: 2
-        x: 128
+        x: 1280
         y: 0
-        width: 32
-        height: 32
+        width: 320
+        height: 320
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -214,20 +214,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ecd53d6f390b34f619f9971cb274b1fc
-      internalID: 1593365731450314267
+      spriteID: df208adc17c1d4a38a9811b8a77a4fcf
+      internalID: 1959937271944707047
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ShipSpeedLevels_5
+      name: ShipSpeedLevels 1_5
       rect:
         serializedVersion: 2
-        x: 160
+        x: 1600
         y: 0
-        width: 32
-        height: 32
+        width: 320
+        height: 320
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -235,20 +235,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0f94149b1c02f436cba4cab5cef7c833
-      internalID: 8859311129646114307
+      spriteID: 416432e73a801403098584a35421e753
+      internalID: -8667276348813947271
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ShipSpeedLevels_6
+      name: ShipSpeedLevels 1_6
       rect:
         serializedVersion: 2
-        x: 192
+        x: 1920
         y: 0
-        width: 32
-        height: 32
+        width: 320
+        height: 320
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -256,8 +256,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ca42436fcc42d4890b188b7d66c6440a
-      internalID: 768930963972487829
+      spriteID: cef55364b811b44c5b7695b3467b3e89
+      internalID: 4691171502948767402
       vertices: []
       indices: 
       edges: []
@@ -265,7 +265,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 0ce44ddf154ce4c1ebea357aeb16e0ac
+    spriteID: 3580b63c35ab443209e15e53944013be
     internalID: 0
     vertices: []
     indices: 

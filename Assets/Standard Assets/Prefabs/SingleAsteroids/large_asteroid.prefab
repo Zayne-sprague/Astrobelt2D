@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 2077392664293563369}
   - component: {fileID: 515226101570988523}
   - component: {fileID: 622296065452235392}
-  - component: {fileID: 2951422819281247899}
   m_Layer: 9
   m_Name: large_asteroid
   m_TagString: Untagged
@@ -70,12 +69,12 @@ SpriteRenderer:
   m_SortingLayerID: 1394060435
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 0b703e9c56cec457b9f02dd51bda2d31, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f37879964bbbf4881bacde7c5cf3bd33, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 12.8, y: 12.8}
+  m_Size: {x: 1.28, y: 1.28}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -98,44 +97,22 @@ PolygonCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 12.8, y: 12.8}
-    newSize: {x: 12.8, y: 12.8}
+    oldSize: {x: 1.28, y: 1.28}
+    newSize: {x: 1.28, y: 1.28}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: -1.6323242, y: -5.1345215}
-      - {x: 2.0845337, y: -5.111267}
-      - {x: 4.215454, y: -2.5194092}
-      - {x: 3.685791, y: -1.218811}
-      - {x: 4.078186, y: 1.7421265}
-      - {x: 2.489685, y: 4.746063}
-      - {x: -0.9077759, y: 5.431244}
-      - {x: -3.0344849, y: 3.2624512}
-      - {x: -3.2235107, y: -0.06326294}
-      - {x: -3.5375366, y: -0.8691101}
-      - {x: -3.2545166, y: -1.9336243}
-      - {x: -3.2375488, y: -3.4969788}
---- !u!50 &2951422819281247899
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2909672623735719346}
-  m_BodyType: 1
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
+    - - {x: -0.29626465, y: 0.32473755}
+      - {x: -0.34942627, y: -0.091430664}
+      - {x: -0.3242798, y: -0.3494568}
+      - {x: -0.16723633, y: -0.5147095}
+      - {x: 0.23284912, y: -0.5111389}
+      - {x: 0.35168457, y: -0.36187744}
+      - {x: 0.4152832, y: -0.24499512}
+      - {x: 0.36920166, y: -0.11923218}
+      - {x: 0.38372803, y: 0.17800903}
+      - {x: 0.27905273, y: 0.46066284}
+      - {x: -0.09539795, y: 0.55319214}
