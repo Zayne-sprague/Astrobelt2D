@@ -42,20 +42,26 @@ public class ItemGenerator : MonoBehaviour
         switch (corridor.direction)
         {
             case Direction.North:
-                inst = Instantiate(prefab, new Vector3(x, (float)(y + length), 0), Quaternion.identity);
-                inst.BuildCollisionBox(1 + (edge_padding * 2), 1);
+                inst = Instantiate(prefab, new Vector3(x, (float)(y + length), 0), Quaternion.Euler(0, 0, 90));
+                inst.BuildCollisionBox(1 + (edge_padding * 2), 1, -90);
+                inst.GetComponent<SpriteRenderer>().transform.rotation = Quaternion.Euler(0, 0, 0);
+
                 break;
             case Direction.East:
                 inst = Instantiate(prefab, new Vector3((float)(x + length), y, 0), Quaternion.identity);
-                inst.BuildCollisionBox(1, 1 + (edge_padding * 2));
+                inst.BuildCollisionBox(1, 1 + (edge_padding * 2), 0);
                 break;
             case Direction.South:
-                inst = Instantiate(prefab, new Vector3(x, (float)(y + offset_from_edge), 0), Quaternion.identity);
-                inst.BuildCollisionBox(1 + (edge_padding * 2), 1);
+                inst = Instantiate(prefab, new Vector3(x, (float)(y + offset_from_edge), 0), Quaternion.Euler(0, 0, -90));
+                inst.BuildCollisionBox(1 + (edge_padding * 2), 1, 90);
+                inst.GetComponent<SpriteRenderer>().transform.rotation = Quaternion.Euler(0, 0, 0);
+
                 break;
             default: //west
                 inst = Instantiate(prefab, new Vector3((float)(x + offset_from_edge), corridor.y, 0), Quaternion.identity);
-                inst.BuildCollisionBox(1, 1 + (edge_padding * 2));
+                inst.BuildCollisionBox(1, 1 + (edge_padding * 2), 0);
+                inst.GetComponent<SpriteRenderer>().transform.rotation = Quaternion.Euler(0, 0, 180);
+
                 break;
         }
 

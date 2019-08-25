@@ -33,6 +33,16 @@ public class AsteroidGenerator : MonoBehaviour
         SetUpTile();
     }
 
+    private void OnBecameVisible()
+    {
+        gameObject.SetActive(true);
+    }
+
+    private void OnBecameInvisible()
+    {
+        gameObject.SetActive(false);
+    }
+
     public void SetUpTile()
     {
         size = new IntRange(minSize, maxSize);

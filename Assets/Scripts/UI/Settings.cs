@@ -45,11 +45,13 @@ public class Settings : MonoBehaviour
 
         if (sfx_option > 0)
         {
+            MasterAudio.UnmuteBus("SFX");
             whiteText(sfx_on_label);
             grayText(sfx_off_label);
         }
         else
         {
+            MasterAudio.MuteBus("SFX");
             whiteText(sfx_off_label);
             grayText(sfx_on_label);
         }

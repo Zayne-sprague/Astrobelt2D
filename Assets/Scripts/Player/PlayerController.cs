@@ -111,30 +111,30 @@ public class PlayerController : MonoBehaviour
 
         int playerspeed = 0;
 
-        if (ShipSpeed < InitialShipSpeed + DecreasePerTurn)
+        if (ShipSpeed > EndingShipSpeed - DecreasePerTurn * 4)
         {
-            playerspeed = 1;
-        }else if (ShipSpeed < InitialShipSpeed + DecreasePerTurn * 4)
-        {
-            playerspeed = 2;
-        }
-        else if (ShipSpeed < InitialShipSpeed + DecreasePerTurn * 8)
-        {
-            playerspeed = 3;
-        }
-        else if (ShipSpeed < InitialShipSpeed + DecreasePerTurn * 12)
-        {
-            playerspeed = 4;
-        }
-        else if (ShipSpeed < EndingShipSpeed - DecreasePerTurn * 8)
+            playerspeed = 6;
+        }else if(ShipSpeed > EndingShipSpeed - DecreasePerTurn * 8)
         {
             playerspeed = 5;
         }
-        else if (ShipSpeed > EndingShipSpeed - DecreasePerTurn * 4)
+        else if (ShipSpeed > EndingShipSpeed - DecreasePerTurn * 16)
         {
-            playerspeed = 6;
+            playerspeed = 4;
         }
-        print(playerspeed);
+        else if (ShipSpeed > EndingShipSpeed - DecreasePerTurn * 24)
+        {
+            playerspeed = 3;
+        }
+        else if (ShipSpeed > EndingShipSpeed - DecreasePerTurn * 32)
+        {
+            playerspeed = 2;
+        }
+        else if (ShipSpeed > EndingShipSpeed - DecreasePerTurn * 40)
+        {
+            playerspeed = 1;
+        }
+
         myAnimator.SetInteger("PlayerSpeedState", playerspeed);
 
         //return new Vector2(0f, 0f);
@@ -221,9 +221,10 @@ public class PlayerController : MonoBehaviour
         if (cameraRotating && !double_turn && ((Time.fixedTime - time_of_rotation_begin) > (secondsToRotate * percentForDoubleTapHotSpot))){ return;  }
 
         bool mouseClick = CrossPlatformInputManager.GetButtonDown("Fire1");
+        bool mouseNativeClick = Input.GetMouseButtonDown(0);
         bool touchEvent = Input.touchCount == 1 && Input.GetTouch(0).phase == TouchPhase.Began;
 
-        if (mouseClick || touchEvent)
+        if (mouseClick || touchEvent || mouseNativeClick)
         {
             if (just_started)
             {

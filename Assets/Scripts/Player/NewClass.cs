@@ -218,11 +218,6 @@ public class PlayerController2 : MonoBehaviour
 
         float new_angle = 90 * (times_rotated) + (double_turn ? 90 : 0);
 
-        if (double_turn)
-        {
-            print("here");
-        }
-
         while (seconds <= time_rotating_player)
         {
 

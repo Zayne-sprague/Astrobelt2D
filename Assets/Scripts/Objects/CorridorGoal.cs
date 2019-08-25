@@ -9,7 +9,7 @@ public class CorridorGoal : MonoBehaviour
     [SerializeField] public float total_time_to_create_room = 5;
     [SerializeField] public int pointsToRecieve = 1;
 
-    SpriteRenderer mySpriteRenderer;
+    public SpriteRenderer mySpriteRenderer;
     ProceduralGameManager game_manager;
     BoxCollider2D myBoxCollider;
 
@@ -22,15 +22,16 @@ public class CorridorGoal : MonoBehaviour
         game_manager = FindObjectOfType<ProceduralGameManager>();
     }
 
-    public void BuildCollisionBox(float x, float y)
+    public void BuildCollisionBox(float x, float y, int rZ)
     {
         myBoxCollider = GetComponent<BoxCollider2D>();
         myBoxCollider.size = new Vector2(x, y);
+        myBoxCollider.transform.rotation = Quaternion.Euler(0, 0, rZ);
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        print("Collision Left");
+        //print("Collision Left");
         StartCoroutine(make_new_room());
     }
 
@@ -51,7 +52,7 @@ public class CorridorGoal : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         MasterAudio.FireCustomEvent("Scored",transform);
-        print("Collision Hit");
+        //print("Collision Hit");
         game_manager.scored(pointsToRecieve);
         mySpriteRenderer.enabled = false;
     }

@@ -139,12 +139,12 @@ public class Corridor : MonoBehaviour
             throw (new System.Exception("Failed to find a reasonably lengthed corridor"));
         }
 
-        print("attempt to find a direction with length: " + length);
+        //print("attempt to find a direction with length: " + length);
 
         do
         {
 
-            print("IN LOOP");
+            //print("IN LOOP");
 
             // Pick a direction and remove it from the array so you don't re-pick it.
             int index = Random.Range(0, possible_directions.Length);

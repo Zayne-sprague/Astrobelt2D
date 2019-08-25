@@ -60,7 +60,7 @@ public class GameOver : MonoBehaviour
         {
             if (score < medal_cut_offs[i])
             {
-                index = Mathf.Max(i - 1, 0);
+                index = Mathf.Max(i, 0);
                 break;
             }
         }
