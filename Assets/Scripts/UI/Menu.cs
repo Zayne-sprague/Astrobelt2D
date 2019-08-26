@@ -24,6 +24,30 @@ public class Menu : MonoBehaviour
                 highscoreLabel.text = "";
             }
         }
+
+        int sfx_option = PlayerPrefs.GetInt("settings_sfx", 1);
+        int music_option = PlayerPrefs.GetInt("settings_music", 1);
+
+        if (music_option > 0)
+        {
+            MasterAudio.PlaylistsMuted = false;
+        }
+        else
+        {
+            MasterAudio.PlaylistsMuted = true;
+        }
+
+        if (sfx_option > 0)
+        {
+            MasterAudio.UnmuteBus("SFX");
+        }
+        else
+        {
+            MasterAudio.MuteBus("SFX");
+        }
+
+
+
     }
 
 

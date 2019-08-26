@@ -26,7 +26,7 @@ public class CorridorGoal : MonoBehaviour
     {
         myBoxCollider = GetComponent<BoxCollider2D>();
         myBoxCollider.size = new Vector2(x, y);
-        myBoxCollider.transform.rotation = Quaternion.Euler(0, 0, rZ);
+        //myBoxCollider.transform.rotation = Quaternion.Euler(0, 0, rZ);
     }
 
     private void OnTriggerExit2D(Collider2D collision)

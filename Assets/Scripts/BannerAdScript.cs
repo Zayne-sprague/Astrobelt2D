@@ -8,13 +8,18 @@ public class BannerAdScript : MonoBehaviour
     public string android_id = "3261780";
     public string gameId;
     [SerializeField] public string placementId = "bannerPlacement";
-    [SerializeField] public bool testMode = true;
+    public bool testMode = false;
     [SerializeField] public bool topMode = true;
 
     void Start()
     {
         gameId = ios_id;
-        Advertisement.Initialize(gameId, testMode);
+
+        if (!Advertisement.isInitialized)
+        {
+            Advertisement.Initialize(gameId, testMode);
+        }
+
         show_banner();
     }
 
@@ -46,6 +51,6 @@ public class BannerAdScript : MonoBehaviour
     }
     public void hide_banner()
     {
-        Advertisement.Banner.Hide(true);
+        Advertisement.Banner.Hide(false);
     }
 }
