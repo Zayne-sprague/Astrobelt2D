@@ -9,6 +9,7 @@ public class BannerAdScript : MonoBehaviour
     public string gameId;
     [SerializeField] public string placementId = "bannerPlacement";
     public bool testMode = false;
+    public bool hideMe = false;
     [SerializeField] public bool topMode = true;
 
     void Start()
@@ -20,6 +21,7 @@ public class BannerAdScript : MonoBehaviour
             Advertisement.Initialize(gameId, testMode);
         }
 
+        hideMe = false;
         show_banner();
     }
 
@@ -34,16 +36,23 @@ public class BannerAdScript : MonoBehaviour
         {
             yield return new WaitForSeconds(0.5f);
         }
-        Advertisement.Banner.Show(placementId);
 
-        if (topMode)
+
+       if (!hideMe)
         {
-            Advertisement.Banner.SetPosition(BannerPosition.TOP_CENTER);
+            Advertisement.Banner.Show(placementId);
+
+            if (topMode)
+            {
+                Advertisement.Banner.SetPosition(BannerPosition.TOP_CENTER);
+            }
+            else
+            {
+                Advertisement.Banner.SetPosition(BannerPosition.BOTTOM_CENTER);
+            }
         }
-        else
-        {
-            Advertisement.Banner.SetPosition(BannerPosition.BOTTOM_CENTER);
-        }
+
+        
     }
     private void OnDestroy()
     {
@@ -51,6 +60,7 @@ public class BannerAdScript : MonoBehaviour
     }
     public void hide_banner()
     {
+        hideMe = true;
         Advertisement.Banner.Hide(false);
     }
 }

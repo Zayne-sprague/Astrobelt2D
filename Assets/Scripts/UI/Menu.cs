@@ -8,6 +8,9 @@ using DarkTonic.MasterAudio;
 public class Menu : MonoBehaviour
 {
     [SerializeField] Text highscoreLabel;
+    [SerializeField] Canvas loadingPanel;
+
+    private bool startingLevel = false;
 
     private void Start()
     {
@@ -53,6 +56,23 @@ public class Menu : MonoBehaviour
 
     public void StartFirstLevel()
     {
+        if (!startingLevel)
+        {
+            startingLevel = true;
+            StartCoroutine(this.__startlevel());
+        }
+    }
+
+    private IEnumerator __startlevel()
+    {
+        float seconds = 0f;
+
+        while (seconds <= 0)
+        {
+            seconds += Time.deltaTime;
+            yield return 0;
+        }
+        startingLevel = false;
         SceneManager.LoadScene(1);
     }
 
@@ -84,6 +104,24 @@ public class Menu : MonoBehaviour
         PlayerPrefs.DeleteAll();
         MasterAudio.PlaylistsMuted = false; // manual reset for this
         SceneManager.LoadScene(0); // reload
+    }
+
+
+    public void show_loading()
+    {
+        if (true)
+        {
+            print(" SHOW LOADING ");
+            loadingPanel.gameObject.SetActive(true);
+        }
+    }
+
+    public void hide_loader()
+    {
+        if (loadingPanel)
+        {
+            loadingPanel.gameObject.SetActive(true);
+        }
     }
 
 }
